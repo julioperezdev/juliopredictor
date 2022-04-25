@@ -1,19 +1,19 @@
 package com.juliopredictor.api.Dashboard.Predictor.Application.getAllOrderedByCmcRank.Adapter;
 
 import com.juliopredictor.api.Dashboard.Predictor.Domain.Port.GetCurrenciesOrderedByCmcRank;
-import com.juliopredictor.api.Dashboard.Predictor.Infrastructure.Gateway.CoinMarketCapClient;
+import com.juliopredictor.api.Dashboard.Predictor.Infrastructure.Gateway.CoinMarketCapClientListTop300;
 import com.juliopredictor.api.Dashboard.Predictor.Infrastructure.Gateway.CoinMarketCapListTop300Response;
 
 public class GetCurrenciesOrderedByCmcRankAdapter implements GetCurrenciesOrderedByCmcRank {
 
-    private final CoinMarketCapClient coinMarketCapClient;
+    private final CoinMarketCapClientListTop300 coinMarketCapClientListTop300;
 
-    public GetCurrenciesOrderedByCmcRankAdapter(CoinMarketCapClient coinMarketCapClient) {
-        this.coinMarketCapClient = coinMarketCapClient;
+    public GetCurrenciesOrderedByCmcRankAdapter(CoinMarketCapClientListTop300 coinMarketCapClientListTop300) {
+        this.coinMarketCapClientListTop300 = coinMarketCapClientListTop300;
     }
 
     public CoinMarketCapListTop300Response getCurrenciesOrderedByCmcRank() throws Exception {
-        return coinMarketCapClient.listTop300ByCmcRank();
+        return coinMarketCapClientListTop300.listTop300ByCmcRank();
     }
 
 }

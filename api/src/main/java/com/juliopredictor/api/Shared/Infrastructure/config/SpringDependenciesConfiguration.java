@@ -26,7 +26,8 @@ import com.juliopredictor.api.Dashboard.Auth.Infrastructure.Repository.Dao.Verif
 import com.juliopredictor.api.Dashboard.Predictor.Application.getAllOrderedByCmcRank.Adapter.GetCurrenciesOrderedByCmcRankAdapter;
 import com.juliopredictor.api.Dashboard.Predictor.Application.getAllOrderedByCmcRank.Delivery.GetCurrenciesOrderedByCmcRankEndPoints;
 import com.juliopredictor.api.Dashboard.Predictor.Application.getAllOrderedByCmcRank.Service.GetCurrenciesOrderedByCmcRankServiceImplementation;
-import com.juliopredictor.api.Dashboard.Predictor.Infrastructure.Gateway.CoinMarketCapClient;
+import com.juliopredictor.api.Dashboard.Predictor.Infrastructure.Gateway.CoinMarketCapClientConnection;
+import com.juliopredictor.api.Dashboard.Predictor.Infrastructure.Gateway.CoinMarketCapClientListTop300;
 import com.juliopredictor.api.Shared.Application.ModelMapper.MailModelMapper;
 import com.juliopredictor.api.Shared.Application.encodeString.Adapter.StringEncoderAdapter;
 import com.juliopredictor.api.Shared.Application.encodeString.Service.StringEncoderService;
@@ -36,7 +37,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -53,8 +53,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.client.RestTemplate;
-
-import java.time.Duration;
 
 @EnableWebSecurity
 @Configuration
@@ -77,7 +75,7 @@ public class SpringDependenciesConfiguration extends WebSecurityConfigurerAdapte
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final JwtProvider jwtProvider;
     ////Backoffice.Predictor
-    private final CoinMarketCapClient coinMarketCapClient;
+    private final CoinMarketCapClientListTop300 coinMarketCapClientListTop300;
     //Announcement.Email
     private final SpringJavaMailer springJavaMailer;
     private final ThymeleafMailContentBuilder thymeleafMailContentBuilder;
@@ -313,7 +311,7 @@ public class SpringDependenciesConfiguration extends WebSecurityConfigurerAdapte
 
     @Bean
     public GetCurrenciesOrderedByCmcRankAdapter getCurrenciesOrderedByCmcRankAdapter(){
-        return new GetCurrenciesOrderedByCmcRankAdapter(coinMarketCapClient);
+        return new GetCurrenciesOrderedByCmcRankAdapter(coinMarketCapClientListTop300);
     }
 
     /**

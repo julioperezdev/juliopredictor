@@ -4,11 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Map;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CoinMarketCapQuotesValuesResponse<T> {
-    private T quote;
+public class CoinMarketCapQuotesValuesResponse {
+    private Map<String,CoinMarketCapQuotesAttributeResponse> quote;
 
     /*
     private T price;

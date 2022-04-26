@@ -31,18 +31,17 @@ public class CoinMarketCapClientHistoricalByCurrency extends CoinMarketCapClient
         log.info("result of data to calculate");
         log.info(cryptoDataToPredict.toString());
         log.info(String.valueOf(cryptoDataToPredict.getData().get(coinMarketCapPredictorRequest.getCryptoId().toString()).getQuote()));
-        /*
-        log.info(String.valueOf(cryptoDataToPredict.getData().get(coinMarketCapPredictorRequest.getCryptoId().toString()).getQuote().getPrice()));
-        log.info(String.valueOf(cryptoDataToPredict.getData().get(coinMarketCapPredictorRequest.getCryptoId().toString()).getQuote().getVolume_24h()));
-        log.info(String.valueOf(cryptoDataToPredict.getData().get(coinMarketCapPredictorRequest.getCryptoId().toString()).getQuote().getVolume_change_24h()));
-        log.info(String.valueOf(cryptoDataToPredict.getData().get(coinMarketCapPredictorRequest.getCryptoId().toString()).getQuote().getPercent_change_1h()));
-        log.info(String.valueOf(cryptoDataToPredict.getData().get(coinMarketCapPredictorRequest.getCryptoId().toString()).getQuote().getPercent_change_24h()));
-        log.info(String.valueOf(cryptoDataToPredict.getData().get(coinMarketCapPredictorRequest.getCryptoId().toString()).getQuote().getPercent_change_7d()));
-        log.info(String.valueOf(cryptoDataToPredict.getData().get(coinMarketCapPredictorRequest.getCryptoId().toString()).getQuote().getPercent_change_30d()));
-        log.info(String.valueOf(cryptoDataToPredict.getData().get(coinMarketCapPredictorRequest.getCryptoId().toString()).getQuote().getPercent_change_60d()));
-        log.info(String.valueOf(cryptoDataToPredict.getData().get(coinMarketCapPredictorRequest.getCryptoId().toString()).getQuote().getPercent_change_90d()));
-         */
 
+
+        log.info("price:".concat(String.valueOf(cryptoDataToPredict.getData().get(coinMarketCapPredictorRequest.getCryptoId().toString()).getQuote().get(coinMarketCapPredictorRequest.getCurrency()).getPrice())));
+        log.info("volume:".concat(String.valueOf(cryptoDataToPredict.getData().get(coinMarketCapPredictorRequest.getCryptoId().toString()).getQuote().get(coinMarketCapPredictorRequest.getCurrency()).getVolume_24h().longValue())));
+        log.info("volume change:".concat(String.valueOf(cryptoDataToPredict.getData().get(coinMarketCapPredictorRequest.getCryptoId().toString()).getQuote().get(coinMarketCapPredictorRequest.getCurrency()).getVolume_change_24h())));
+        log.info("percent change 1h:".concat(String.valueOf(cryptoDataToPredict.getData().get(coinMarketCapPredictorRequest.getCryptoId().toString()).getQuote().get(coinMarketCapPredictorRequest.getCurrency()).getPercent_change_1h())));
+        log.info("percent change 24h:".concat(String.valueOf(cryptoDataToPredict.getData().get(coinMarketCapPredictorRequest.getCryptoId().toString()).getQuote().get(coinMarketCapPredictorRequest.getCurrency()).getPercent_change_24h())));
+        log.info("percent change 7d:".concat(String.valueOf(cryptoDataToPredict.getData().get(coinMarketCapPredictorRequest.getCryptoId().toString()).getQuote().get(coinMarketCapPredictorRequest.getCurrency()).getPercent_change_7d())));
+        log.info("percent change 30d:".concat(String.valueOf(cryptoDataToPredict.getData().get(coinMarketCapPredictorRequest.getCryptoId().toString()).getQuote().get(coinMarketCapPredictorRequest.getCurrency()).getPercent_change_30d())));
+        log.info("percent change 60d:".concat(String.valueOf(cryptoDataToPredict.getData().get(coinMarketCapPredictorRequest.getCryptoId().toString()).getQuote().get(coinMarketCapPredictorRequest.getCurrency()).getPercent_change_60d())));
+        log.info("percent change 90d:".concat(String.valueOf(cryptoDataToPredict.getData().get(coinMarketCapPredictorRequest.getCryptoId().toString()).getQuote().get(coinMarketCapPredictorRequest.getCurrency()).getPercent_change_90d())));
 
         String cryptoCurrencyLogoById = getCryptoCurrencyLogoById(coinMarketCapPredictorRequest.getCryptoId());
         log.info("result of logo");

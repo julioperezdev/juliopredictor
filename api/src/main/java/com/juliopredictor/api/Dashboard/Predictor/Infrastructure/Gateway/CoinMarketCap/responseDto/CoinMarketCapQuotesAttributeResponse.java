@@ -9,13 +9,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CoinMarketCapQuotesAttributeResponse {
 
-    private double price;
-    private double volume_24h;
-    private double volume_change_24h;
-    private double percent_change_1h;
-    private double percent_change_24h;
-    private double percent_change_7d;
-    private double percent_change_30d;
-    private double percent_change_60d;
-    private double percent_change_90d;
+    private Double price;
+    private Double volume_24h;
+    private Double volume_change_24h;
+    private Double percent_change_1h;
+    private Double percent_change_24h;
+    private Double percent_change_7d;
+    private Double percent_change_30d;
+    private Double percent_change_60d;
+    private Double percent_change_90d;
 }

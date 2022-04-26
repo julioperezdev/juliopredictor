@@ -1,4 +1,4 @@
-package com.juliopredictor.api.Dashboard.Predictor.Infrastructure.Gateway;
+package com.juliopredictor.api.Dashboard.Predictor.Infrastructure.Gateway.CoinMarketCap.responseDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,7 +1,7 @@
 package com.juliopredictor.api.Dashboard.Predictor.Application.getAllOrderedByCmcRank.Service;
 
 import com.juliopredictor.api.Dashboard.Predictor.Application.getAllOrderedByCmcRank.Adapter.GetCurrenciesOrderedByCmcRankAdapter;
-import com.juliopredictor.api.Dashboard.Predictor.Infrastructure.Gateway.CoinMarketCapListTop300Response;
+import com.juliopredictor.api.Dashboard.Predictor.Infrastructure.Gateway.CoinMarketCap.responseDto.CoinMarketCapListTop300Response;
 
 public class GetCurrenciesOrderedByCmcRankServiceImplementation implements GetCurrenciesOrderedByCmcRankService{
 

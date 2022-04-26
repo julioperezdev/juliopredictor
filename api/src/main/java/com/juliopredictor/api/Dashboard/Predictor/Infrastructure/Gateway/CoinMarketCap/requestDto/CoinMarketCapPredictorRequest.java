@@ -1,15 +1,15 @@
-package com.juliopredictor.api.Dashboard.Predictor.Infrastructure.Gateway;
+package com.juliopredictor.api.Dashboard.Predictor.Infrastructure.Gateway.CoinMarketCap.requestDto;
 
 public class CoinMarketCapPredictorRequest {
 
-    private String cryptoId;
+    private Long cryptoId;
     private String currency;
 
-    public String getCryptoId() {
+    public Long getCryptoId() {
         return cryptoId;
     }
 
-    public void setCryptoId(String cryptoId) {
+    public void setCryptoId(Long cryptoId) {
         this.cryptoId = cryptoId;
     }
 

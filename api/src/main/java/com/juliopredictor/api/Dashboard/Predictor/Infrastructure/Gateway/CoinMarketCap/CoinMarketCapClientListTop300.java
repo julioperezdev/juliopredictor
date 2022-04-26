@@ -1,5 +1,6 @@
-package com.juliopredictor.api.Dashboard.Predictor.Infrastructure.Gateway;
+package com.juliopredictor.api.Dashboard.Predictor.Infrastructure.Gateway.CoinMarketCap;
 
+import com.juliopredictor.api.Dashboard.Predictor.Infrastructure.Gateway.CoinMarketCap.responseDto.CoinMarketCapListTop300Response;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;

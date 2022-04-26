@@ -1,7 +1,7 @@
 package com.juliopredictor.api.Dashboard.Predictor.Infrastructure.Delivery;
 
 import com.juliopredictor.api.Dashboard.Predictor.Application.getAllOrderedByCmcRank.Delivery.GetCurrenciesOrderedByCmcRankEndPoints;
-import com.juliopredictor.api.Dashboard.Predictor.Infrastructure.Gateway.CoinMarketCapListTop300Response;
+import com.juliopredictor.api.Dashboard.Predictor.Infrastructure.Gateway.CoinMarketCap.responseDto.CoinMarketCapListTop300Response;
 import com.juliopredictor.api.Shared.Infrastructure.Delivery.RestResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

@@ -1,4 +1,4 @@
-package com.juliopredictor.api.Dashboard.Predictor.Infrastructure.Gateway;
+package com.juliopredictor.api.Dashboard.Predictor.Infrastructure.Gateway.CoinMarketCap;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;

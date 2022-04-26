@@ -26,8 +26,7 @@ import com.juliopredictor.api.Dashboard.Auth.Infrastructure.Repository.Dao.Verif
 import com.juliopredictor.api.Dashboard.Predictor.Application.getAllOrderedByCmcRank.Adapter.GetCurrenciesOrderedByCmcRankAdapter;
 import com.juliopredictor.api.Dashboard.Predictor.Application.getAllOrderedByCmcRank.Delivery.GetCurrenciesOrderedByCmcRankEndPoints;
 import com.juliopredictor.api.Dashboard.Predictor.Application.getAllOrderedByCmcRank.Service.GetCurrenciesOrderedByCmcRankServiceImplementation;
-import com.juliopredictor.api.Dashboard.Predictor.Infrastructure.Gateway.CoinMarketCapClientConnection;
-import com.juliopredictor.api.Dashboard.Predictor.Infrastructure.Gateway.CoinMarketCapClientListTop300;
+import com.juliopredictor.api.Dashboard.Predictor.Infrastructure.Gateway.CoinMarketCap.CoinMarketCapClientListTop300;
 import com.juliopredictor.api.Shared.Application.ModelMapper.MailModelMapper;
 import com.juliopredictor.api.Shared.Application.encodeString.Adapter.StringEncoderAdapter;
 import com.juliopredictor.api.Shared.Application.encodeString.Service.StringEncoderService;
@@ -265,6 +264,8 @@ public class SpringDependenciesConfiguration extends WebSecurityConfigurerAdapte
                 .antMatchers("/api/login")
                 .permitAll()
                 .antMatchers("/api/currencies")
+                .permitAll()
+                .antMatchers("/api/predictor")
                 .permitAll()
                 .anyRequest()
                 .authenticated();

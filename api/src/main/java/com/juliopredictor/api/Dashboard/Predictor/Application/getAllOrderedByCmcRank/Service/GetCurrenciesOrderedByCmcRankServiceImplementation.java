@@ -12,7 +12,7 @@ public class GetCurrenciesOrderedByCmcRankServiceImplementation implements GetCu
     }
 
     @Override
-    public CoinMarketCapListTop300Response getCurrenciesOrderedByCmcRank() throws Exception {
+    public CoinMarketCapListTop300Response getCurrenciesOrderedByCmcRank(){
         return getCurrenciesOrderedByCmcRankAdapter.getCurrenciesOrderedByCmcRank();
     }
 }

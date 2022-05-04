@@ -25,9 +25,10 @@ public class CoinMarketCapClientHistoricalByCurrency extends CoinMarketCapClient
     @Value("${coinmarketcap.parameter.cryptocurrency.id}")
     private String cryptoCurrencyParameter;
 
-    public UncalculatePrediction getCurrencyWithPrediction(CoinMarketCapPredictorRequest coinMarketCapPredictorRequest){
+    public UncalculatePrediction getCurrencyWithHistoricalPrices(CoinMarketCapPredictorRequest coinMarketCapPredictorRequest){
 
-        CoinMarketCapQuotesBaseResponse cryptoDataToPredict = getCryptoDataToPredict(coinMarketCapPredictorRequest);
+        //CoinMarketCapQuotesBaseResponse cryptoDataToPredict = getCryptoDataToPredict(coinMarketCapPredictorRequest);
+        /*
         log.info("result of data to calculate");
         log.info(cryptoDataToPredict.toString());
         log.info(String.valueOf(cryptoDataToPredict.getData().get(coinMarketCapPredictorRequest.getCryptoId().toString()).getQuote()));
@@ -47,8 +48,25 @@ public class CoinMarketCapClientHistoricalByCurrency extends CoinMarketCapClient
         log.info("result of logo");
         log.info(cryptoCurrencyLogoById);
 
-        return new UncalculatePrediction(cryptoDataToPredict, cryptoCurrencyLogoById);
+         */
+        CoinMarketCapQuotesBaseResponse cryptoDataToPredict = getCryptoDataToPredict(coinMarketCapPredictorRequest);
+        String cryptoCurrencyLogoById = getCryptoCurrencyLogoById(coinMarketCapPredictorRequest.getCryptoId());
+        return buildUnCalculatePrediction(cryptoDataToPredict,coinMarketCapPredictorRequest, cryptoCurrencyLogoById);
 
+    }
+
+    public UncalculatePrediction buildUnCalculatePrediction(CoinMarketCapQuotesBaseResponse cryptoDataToPredict, CoinMarketCapPredictorRequest coinMarketCapPredictorRequest, String cryptoCurrencyLogoById){
+        return new UncalculatePrediction(
+                cryptoDataToPredict.getData().get(coinMarketCapPredictorRequest.getCryptoId().toString()).getQuote().get(coinMarketCapPredictorRequest.getCurrency()).getPrice(),
+                cryptoDataToPredict.getData().get(coinMarketCapPredictorRequest.getCryptoId().toString()).getQuote().get(coinMarketCapPredictorRequest.getCurrency()).getVolume_24h().longValue(),
+                cryptoDataToPredict.getData().get(coinMarketCapPredictorRequest.getCryptoId().toString()).getQuote().get(coinMarketCapPredictorRequest.getCurrency()).getVolume_change_24h(),
+                cryptoDataToPredict.getData().get(coinMarketCapPredictorRequest.getCryptoId().toString()).getQuote().get(coinMarketCapPredictorRequest.getCurrency()).getPercent_change_1h(),
+                cryptoDataToPredict.getData().get(coinMarketCapPredictorRequest.getCryptoId().toString()).getQuote().get(coinMarketCapPredictorRequest.getCurrency()).getPercent_change_24h(),
+                cryptoDataToPredict.getData().get(coinMarketCapPredictorRequest.getCryptoId().toString()).getQuote().get(coinMarketCapPredictorRequest.getCurrency()).getPercent_change_7d(),
+                cryptoDataToPredict.getData().get(coinMarketCapPredictorRequest.getCryptoId().toString()).getQuote().get(coinMarketCapPredictorRequest.getCurrency()).getPercent_change_30d(),
+                cryptoDataToPredict.getData().get(coinMarketCapPredictorRequest.getCryptoId().toString()).getQuote().get(coinMarketCapPredictorRequest.getCurrency()).getPercent_change_60d(),
+                cryptoDataToPredict.getData().get(coinMarketCapPredictorRequest.getCryptoId().toString()).getQuote().get(coinMarketCapPredictorRequest.getCurrency()).getPercent_change_90d(),
+                cryptoCurrencyLogoById);
     }
 
     public CoinMarketCapQuotesBaseResponse getCryptoDataToPredict(CoinMarketCapPredictorRequest coinMarketCapPredictorRequest){

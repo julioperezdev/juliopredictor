@@ -12,7 +12,7 @@ public class GetCurrenciesOrderedByCmcRankAdapter implements GetCurrenciesOrdere
         this.coinMarketCapClientListTop300 = coinMarketCapClientListTop300;
     }
 
-    public CoinMarketCapListTop300Response getCurrenciesOrderedByCmcRank() throws Exception {
+    public CoinMarketCapListTop300Response getCurrenciesOrderedByCmcRank() {
         return coinMarketCapClientListTop300.listTop300ByCmcRank();
     }
 

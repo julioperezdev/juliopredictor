@@ -1,13 +1,19 @@
 package com.juliopredictor.api.Dashboard.Predictor.Infrastructure.Delivery;
 
-import com.juliopredictor.api.Dashboard.Predictor.Infrastructure.Gateway.CoinMarketCap.CoinMarketCapClientHistoricalByCurrency;
+import com.juliopredictor.api.Dashboard.Predictor.Application.predicateByCurrency.Delivery.PredicateByCurrencyEndPoints;
+import com.juliopredictor.api.Dashboard.Predictor.Domain.Model.CalculatedPrediction;
+import com.juliopredictor.api.Dashboard.Predictor.Domain.Model.UncalculatePrediction;
 import com.juliopredictor.api.Dashboard.Predictor.Infrastructure.Gateway.CoinMarketCap.requestDto.CoinMarketCapPredictorRequest;
+import com.juliopredictor.api.Shared.Infrastructure.Delivery.RestResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/predictor")
@@ -15,12 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class SpringPredictorController {
 
-    private final CoinMarketCapClientHistoricalByCurrency coinMarketCapClientHistoricalByCurrency;
+    private final PredicateByCurrencyEndPoints predicateByCurrencyEndPoints;
 
     @GetMapping
-    public void predictor(@RequestBody CoinMarketCapPredictorRequest coinMarketCapPredictorRequest){
-        coinMarketCapClientHistoricalByCurrency.getCurrencyWithPrediction(coinMarketCapPredictorRequest);
-        log.info("was OK");
-
+    public RestResponse<Map<Boolean, UncalculatePrediction>> predictor(@RequestBody CoinMarketCapPredictorRequest coinMarketCapPredictorRequest){
+        Map<Boolean, UncalculatePrediction> predication = predicateByCurrencyEndPoints.getPredication(coinMarketCapPredictorRequest);
+        return new RestResponse<>(HttpStatus.GONE, "Prediction was generated",predication);
     }
 }

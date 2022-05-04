@@ -26,6 +26,10 @@ import com.juliopredictor.api.Dashboard.Auth.Infrastructure.Repository.Dao.Verif
 import com.juliopredictor.api.Dashboard.Predictor.Application.getAllOrderedByCmcRank.Adapter.GetCurrenciesOrderedByCmcRankAdapter;
 import com.juliopredictor.api.Dashboard.Predictor.Application.getAllOrderedByCmcRank.Delivery.GetCurrenciesOrderedByCmcRankEndPoints;
 import com.juliopredictor.api.Dashboard.Predictor.Application.getAllOrderedByCmcRank.Service.GetCurrenciesOrderedByCmcRankServiceImplementation;
+import com.juliopredictor.api.Dashboard.Predictor.Application.predicateByCurrency.Adapter.PredicateByCurrencyAdapter;
+import com.juliopredictor.api.Dashboard.Predictor.Application.predicateByCurrency.Delivery.PredicateByCurrencyEndPoints;
+import com.juliopredictor.api.Dashboard.Predictor.Application.predicateByCurrency.Service.PredicateByCurrencyServiceImplementation;
+import com.juliopredictor.api.Dashboard.Predictor.Infrastructure.Gateway.CoinMarketCap.CoinMarketCapClientHistoricalByCurrency;
 import com.juliopredictor.api.Dashboard.Predictor.Infrastructure.Gateway.CoinMarketCap.CoinMarketCapClientListTop300;
 import com.juliopredictor.api.Shared.Application.ModelMapper.MailModelMapper;
 import com.juliopredictor.api.Shared.Application.encodeString.Adapter.StringEncoderAdapter;
@@ -75,6 +79,7 @@ public class SpringDependenciesConfiguration extends WebSecurityConfigurerAdapte
     private final JwtProvider jwtProvider;
     ////Backoffice.Predictor
     private final CoinMarketCapClientListTop300 coinMarketCapClientListTop300;
+    private final CoinMarketCapClientHistoricalByCurrency coinMarketCapClientHistoricalByCurrency;
     //Announcement.Email
     private final SpringJavaMailer springJavaMailer;
     private final ThymeleafMailContentBuilder thymeleafMailContentBuilder;
@@ -298,7 +303,7 @@ public class SpringDependenciesConfiguration extends WebSecurityConfigurerAdapte
      */
 
     /**
-     * Predictor/Application/*
+     * Predictor/Application/getCurrenciesOrderedByCmcRank
      */
     @Bean
     public GetCurrenciesOrderedByCmcRankEndPoints getCurrenciesOrderedByCmcRankEndPoints(){
@@ -313,6 +318,25 @@ public class SpringDependenciesConfiguration extends WebSecurityConfigurerAdapte
     @Bean
     public GetCurrenciesOrderedByCmcRankAdapter getCurrenciesOrderedByCmcRankAdapter(){
         return new GetCurrenciesOrderedByCmcRankAdapter(coinMarketCapClientListTop300);
+    }
+
+    /**
+     * Predictor/Application/predicateByCurrency
+     */
+
+    @Bean
+    public PredicateByCurrencyEndPoints predicateByCurrencyEndPoints(){
+        return new PredicateByCurrencyEndPoints(predicateByCurrencyServiceImplementation());
+    }
+
+    @Bean
+    public PredicateByCurrencyServiceImplementation predicateByCurrencyServiceImplementation(){
+        return new PredicateByCurrencyServiceImplementation(predicateByCurrencyAdapter());
+    }
+
+    @Bean
+    public PredicateByCurrencyAdapter predicateByCurrencyAdapter(){
+        return new PredicateByCurrencyAdapter(coinMarketCapClientHistoricalByCurrency);
     }
 
     /**

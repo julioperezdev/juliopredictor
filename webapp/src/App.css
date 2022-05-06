@@ -1,0 +1,14 @@
+.headerComponent{
+    position: absolute;
+    width: 100%;
+    bottom: 0%;
+}
+
+@media only screen and (min-width: 768px) {
+    .headerComponent{
+        position: static;
+        display: grid;
+    }
+}
+@media only screen and (min-width: 1024px) {}
+@media only screen and (min-width: 1200px) {}

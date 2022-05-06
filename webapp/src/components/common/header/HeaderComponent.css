@@ -1,0 +1,71 @@
+.mobileHeader{
+    /*Position*/
+    display: grid;
+    grid-template-columns: repeat(4, 22%);
+    justify-content: center;
+    justify-items: center;
+    height: 50px;
+    /*Color*/
+    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.headerIcon{
+    display: grid;
+    width: 25px;
+    margin: 10px;
+}
+
+.headerIcon:hover{
+    animation-name: iconHeaderAnimation;
+    animation-duration: 0.5s;
+}
+
+@keyframes iconHeaderAnimation {
+    0%{width: 25px;}
+    100%{width: 30px;}
+}
+
+@media only screen and (min-width: 480px) {
+
+}
+@media only screen and (min-width: 768px) {
+.desktopHeader{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    align-items: center;
+    justify-content: center;
+    height: 90px;
+    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: aliceblue;
+}
+
+.desktopHeader > h1{
+    display: grid;
+    justify-items: center;
+}
+
+.desktopHeader > div{
+    height: 80px;
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    justify-content: center;
+    justify-items: center;
+    font-size: 18px;
+    align-items: center;
+    
+}
+
+.desktopHeader > div > p:hover{
+    animation-name: linkDesktopHeader;
+    animation-duration: 3s;
+}
+
+@keyframes linkDesktopHeader {
+    0%{font-size: 18px;}
+    100%{font-size: 20px;}
+}
+
+}
+@media only screen and (min-width: 1024px) {}
+@media only screen and (min-width: 1200px) {}
+

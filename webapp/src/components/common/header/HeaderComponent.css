@@ -1,3 +1,7 @@
+.desktopHeader{
+    font-size: 0px;
+}
+
 .mobileHeader{
     /*Position*/
     display: grid;
@@ -29,6 +33,11 @@
 
 }
 @media only screen and (min-width: 768px) {
+.mobileHeader{
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+}
 .desktopHeader{
     display: grid;
     grid-template-columns: 30% 70%;
@@ -37,6 +46,7 @@
     height: 90px;
     background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: aliceblue;
+    font-size: medium;
 }
 
 .desktopHeader > h1{
@@ -50,7 +60,7 @@
     grid-template-columns: repeat(4, 25%);
     justify-content: center;
     justify-items: center;
-    font-size: 18px;
+    font-size: 16px;
     align-items: center;
     
 }
@@ -61,8 +71,9 @@
 }
 
 @keyframes linkDesktopHeader {
-    0%{font-size: 18px;}
-    100%{font-size: 20px;}
+    0%{font-size: 16px;}
+    50%{font-size: 25px;}
+    100%{font-size: 16px;}
 }
 
 }

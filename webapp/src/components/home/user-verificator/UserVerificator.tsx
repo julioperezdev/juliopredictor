@@ -33,7 +33,7 @@ export const UserVerificator = ({authenticationStatus}) =>{
                         <img 
                         src="image/user3.png" 
                         className="" />
-                        <p>{stringCreator("perezjulioernesto@gmail.comfsdfsdfsdfsdfsfs", 30)}</p>
+                        <p>{stringCreator("perezjulioernesto@gmail.com", 30)}</p>
                     </div>
                     <div>
                         <img 
@@ -48,7 +48,7 @@ export const UserVerificator = ({authenticationStatus}) =>{
                         <img 
                         src="image/user2.png" 
                         className="" />
-                        <p>perezjulioernesto@gmail.com</p>
+                        <p>{stringCreator("perezjulioernesto@gmail.com", 30)}</p>
                     </div>
                     <div>
                         <img 

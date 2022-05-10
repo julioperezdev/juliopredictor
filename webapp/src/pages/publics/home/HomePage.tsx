@@ -1,4 +1,5 @@
 import {UserVerificator} from "../../../components/home/user-verificator/UserVerificator"
+import {FavoriteCrypto} from "../../../components/home/favorite-crypto/FavoriteCrypto"
 
 import "./HomePage.css"
 
@@ -13,6 +14,8 @@ export const HomePage = () =>{
         <>
         <div className="home-page-base">
             <UserVerificator 
+            authenticationStatus ={authenticationStatus}/>
+            <FavoriteCrypto
             authenticationStatus ={authenticationStatus}/>
         </div>
         {/* <p>userComponent</p>

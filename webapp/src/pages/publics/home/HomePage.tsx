@@ -9,7 +9,7 @@ export const HomePage = () =>{
     const AUTHENTICATION_IN_PROCESS : number = 1;
     const AUTHENTICATED : number = 2;
 
-    const authenticationStatus : number = 1;
+    const authenticationStatus : number = 0;
     return(
         <>
         <div className="home-page-base">

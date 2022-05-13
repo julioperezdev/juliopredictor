@@ -1,9 +1,17 @@
+import {useState} from "react"
+import {EmailImput} from "../../common/emailInput/EmailImput"
 import "./UserVerificator.css"
 
 export const UserVerificator = ({authenticationStatus}) =>{
 
+    const [useAddEmail, setUseAddEmail] = useState(false);
+
     const stringCreator = (value:string, quantity:number):string =>{
         return value.length > quantity ? value.slice(0, quantity).concat("..."): value;
+    }
+
+    const onClickAddEmail = () =>{
+        setUseAddEmail(true)
     }
 
     return(
@@ -13,12 +21,14 @@ export const UserVerificator = ({authenticationStatus}) =>{
                 switch(authenticationStatus){
                 case 0:
                     return <>
-                    <div className="">
+                    {!useAddEmail?
+                    <div
+                    onClick={() => onClickAddEmail()}>
                         <img 
-                        src="image/add.png" 
-                        className="" />
+                        src="image/add.png"/>
                         <p>Agregar email</p>
-                    </div>
+                    </div>:
+                    <EmailImput/>}
                     <div>
                         <img 
                         src="image/cross.png" 

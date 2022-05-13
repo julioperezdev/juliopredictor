@@ -1,0 +1,30 @@
+
+.email-input-state0{
+    width: 90% !important;
+    height: 20px !important;
+    border-radius: 10px !important;
+    margin-bottom: 0 10px !important;
+    border: solid 5px rgb(232, 24, 138) !important;
+    padding: 10px 5px !important;
+    text-align: center !important;
+}
+
+.email-input-state0-email{
+    display: grid !important;
+    grid-template-columns: 70% 10% !important;
+    justify-content: center !important;
+    justify-items: center !important;
+    align-items: center !important;
+}
+.email-input-state0-email img{
+    width: 30px !important;
+}
+.email-input-state0-email img:hover{
+    animation-name: iconSendEmail !important;
+    animation-duration: 0.5s !important;
+}
+
+@keyframes iconSendEmail {
+    0%{width: 30px;}
+    100%{width: 40px;}
+}

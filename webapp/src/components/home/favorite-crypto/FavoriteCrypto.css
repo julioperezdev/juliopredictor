@@ -1,0 +1,63 @@
+.favorite-crypto-base{
+    display: grid;
+    width: 80%;
+    height: 250px;
+    border-radius: 20px;
+    margin-top: 20px;
+    text-align: center;
+    align-items: center;
+    
+}
+
+.favorite-crypto-base-0{
+    background-image: linear-gradient(120deg, #f5576c 0%, #f093fb 100%);
+    box-shadow: 5px 5px 30px rgb(255, 191, 191);
+    color: #E8E8E8;
+}
+
+.favorite-crypto-base-1{
+    background: #f09819; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f09819, #edde5d); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f09819, #edde5d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    box-shadow: 5px 5px 30px rgb(148, 138, 42);
+    color: #eeeeee;
+}
+
+.favorite-crypto-base-2{
+    background-image: linear-gradient(120deg, #96e6a1 0%, #d4fc79 100%);
+    box-shadow: 5px 5px 30px rgb(199, 255, 210);
+    color: #5e5e5e;
+}
+
+.favorite-crypto-base img {
+    width: 60px;
+}
+
+/* .favorite-crypto-base input {
+    width: 90%;
+    height: 20px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: solid 5px rgb(232, 24, 138);
+    padding: 10px 5px;
+    text-align: center;
+}
+
+.favorite-crypto-state0-email{
+    display: grid;
+    grid-template-columns: 70% 10%;
+    justify-content: center;
+    align-items: center;
+}
+.favorite-crypto-state0-email img{
+    width: 30px;
+}
+.favorite-crypto-state0-email img:hover{
+    animation-name: iconSendEmail;
+    animation-duration: 0.5s;
+}
+
+@keyframes iconSendEmail {
+    0%{width: 30px;}
+    100%{width: 40px;}
+} */

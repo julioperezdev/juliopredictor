@@ -1,6 +1,6 @@
-import "./EmailImput.css"
+import "./EmailInput.css"
 
-export const EmailImput = () =>{
+export const EmailInput = () =>{
     return(
         <div  className="email-input-state0-email">
             <input 

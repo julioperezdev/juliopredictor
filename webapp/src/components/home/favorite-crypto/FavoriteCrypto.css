@@ -27,37 +27,10 @@
     background-image: linear-gradient(120deg, #96e6a1 0%, #d4fc79 100%);
     box-shadow: 5px 5px 30px rgb(199, 255, 210);
     color: #5e5e5e;
+    overflow:hidden;
+    overflow-y:auto;
 }
 
 .favorite-crypto-base img {
     width: 60px;
 }
-
-/* .favorite-crypto-base input {
-    width: 90%;
-    height: 20px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    border: solid 5px rgb(232, 24, 138);
-    padding: 10px 5px;
-    text-align: center;
-}
-
-.favorite-crypto-state0-email{
-    display: grid;
-    grid-template-columns: 70% 10%;
-    justify-content: center;
-    align-items: center;
-}
-.favorite-crypto-state0-email img{
-    width: 30px;
-}
-.favorite-crypto-state0-email img:hover{
-    animation-name: iconSendEmail;
-    animation-duration: 0.5s;
-}
-
-@keyframes iconSendEmail {
-    0%{width: 30px;}
-    100%{width: 40px;}
-} */

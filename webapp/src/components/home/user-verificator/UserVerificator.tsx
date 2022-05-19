@@ -1,5 +1,5 @@
 import {useState} from "react"
-import {EmailImput} from "../../common/emailInput/EmailImput"
+import {EmailInput} from "../../common/emailInput/EmailInput"
 import "./UserVerificator.css"
 
 export const UserVerificator = ({authenticationStatus}) =>{
@@ -28,7 +28,7 @@ export const UserVerificator = ({authenticationStatus}) =>{
                         src="image/add.png"/>
                         <p>Agregar email</p>
                     </div>:
-                    <EmailImput/>}
+                    <EmailInput/>}
                     <div>
                         <img 
                         src="image/cross.png" 

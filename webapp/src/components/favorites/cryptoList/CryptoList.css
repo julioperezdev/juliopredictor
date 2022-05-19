@@ -1,0 +1,29 @@
+.crypto-list-base > div{
+    display: grid !important;
+    grid-template-columns: repeat(3, 33%)!important;
+    justify-content: center!important;
+    
+}
+
+.crypto-list-base > ul{
+    display: grid!important;
+    justify-self: center !important;
+    padding-left: 0;
+}
+
+.crypto-list-base > ul > li{
+    display: grid!important;
+    grid-template-columns: repeat(3, 33%)!important;
+    list-style: none!important;    
+}
+
+
+.crypto-list-base > ul > li > p{
+    display: grid!important;
+    margin: 5px auto!important;
+}
+
+.crypto-list-ul{
+    overflow:hidden;
+    overflow-y:auto;
+}

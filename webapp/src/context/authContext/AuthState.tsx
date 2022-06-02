@@ -16,8 +16,12 @@ const AuthState = (props) =>{
     const [state, dispatch] = useReducer(AuthReducer, initialState);
 
     const signupUser = async (signupRequest: LoginRequestDto) =>{
-        const response = await HttpClient.post(`/signup`, signupRequest);
+        const response = await HttpClient.post(`/signup/user`, signupRequest);
         console.log(response.data);
+        dispatch({
+            type: 'LOGIN',
+            payload: response.data
+        })
     }
 
     const loginUser = async (loginRequest: LoginRequestDto) =>{

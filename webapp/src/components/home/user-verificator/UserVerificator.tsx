@@ -1,19 +1,34 @@
-import {useState} from "react"
+import {useContext, useEffect, useState} from "react"
 import {EmailInput} from "../../common/emailInput/EmailInput"
 import "./UserVerificator.css"
+import AuthContext from "../../../context/authContext/AuthContext"
 
 export const UserVerificator = ({authenticationStatus}) =>{
 
+    
+    const {signupUser} = useContext(AuthContext);
+    
     const [useAddEmail, setUseAddEmail] = useState(false);
 
     const stringCreator = (value:string, quantity:number):string =>{
         return value.length > quantity ? value.slice(0, quantity).concat("..."): value;
     }
+    
 
     const onClickAddEmail = () =>{
         setUseAddEmail(true)
     }
 
+    
+    useEffect(() =>{
+        const request = {
+            email: "mario@email.com",
+            idRol: 1
+        }
+        signupUser(request);
+    },[])
+
+    
     return(
         <div 
         className={"user-verificator-base user-verificator-".concat(authenticationStatus.toString())}>

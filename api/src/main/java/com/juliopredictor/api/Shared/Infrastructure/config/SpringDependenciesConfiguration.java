@@ -36,8 +36,8 @@ import com.juliopredictor.api.Shared.Application.encodeString.Adapter.StringEnco
 import com.juliopredictor.api.Shared.Application.encodeString.Service.StringEncoderService;
 import com.juliopredictor.api.Shared.Application.encodeString.Service.StringEncoderServiceImplementation;
 import com.juliopredictor.api.Shared.Infrastructure.Gateway.SpringFrameworkStringEncoder;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
@@ -56,6 +56,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @EnableWebSecurity
 @Configuration
@@ -64,11 +66,11 @@ import org.springframework.web.client.RestTemplate;
 @EnableTransactionManagement
 @EnableAutoConfiguration
 @ComponentScan(basePackages = {"com.juliopredictor.api.*"})
-@AllArgsConstructor
 public class SpringDependenciesConfiguration extends WebSecurityConfigurerAdapter{
 
+    @Value("${allowed.origins}")
+    private String allowedOriginsUrl;
     //Backoffice.Course
-    //private final CourseDao courseDao;
     //Backoffice.Auth
     private final UserDao userDao;
     private final UserRolDao userRolDao;
@@ -84,6 +86,19 @@ public class SpringDependenciesConfiguration extends WebSecurityConfigurerAdapte
     private final SpringJavaMailer springJavaMailer;
     private final ThymeleafMailContentBuilder thymeleafMailContentBuilder;
     //Shared
+    public SpringDependenciesConfiguration(UserDao userDao, UserRolDao userRolDao, VerificationTokenDao verificationTokenDao, RefreshTokenDao refreshTokenDao, UserDetailsService userDetailsService, JwtAuthenticationFilter jwtAuthenticationFilter, JwtProvider jwtProvider, CoinMarketCapClientListTop300 coinMarketCapClientListTop300, CoinMarketCapClientHistoricalByCurrency coinMarketCapClientHistoricalByCurrency, SpringJavaMailer springJavaMailer, ThymeleafMailContentBuilder thymeleafMailContentBuilder) {
+        this.userDao = userDao;
+        this.userRolDao = userRolDao;
+        this.verificationTokenDao = verificationTokenDao;
+        this.refreshTokenDao = refreshTokenDao;
+        this.userDetailsService = userDetailsService;
+        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+        this.jwtProvider = jwtProvider;
+        this.coinMarketCapClientListTop300 = coinMarketCapClientListTop300;
+        this.coinMarketCapClientHistoricalByCurrency = coinMarketCapClientHistoricalByCurrency;
+        this.springJavaMailer = springJavaMailer;
+        this.thymeleafMailContentBuilder = thymeleafMailContentBuilder;
+    }
 
 
     /**
@@ -257,10 +272,24 @@ public class SpringDependenciesConfiguration extends WebSecurityConfigurerAdapte
         return super.authenticationManagerBean();
     }
 
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**")
+                        .allowedOrigins(allowedOriginsUrl)
+                        .allowedMethods("GET", "POST")
+                        .maxAge(3600);
+            }
+        };
+    }
 
     @Override
     public void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
+                .cors()
+                .and()
                 .csrf()
                 .disable()
                 .authorizeRequests()
@@ -268,7 +297,7 @@ public class SpringDependenciesConfiguration extends WebSecurityConfigurerAdapte
                 .permitAll()
                 .antMatchers("/api/login")
                 .permitAll()
-                .antMatchers("/api/currencies")
+                .antMatchers("/api/currencies/**")
                 .permitAll()
                 .antMatchers("/api/predictor")
                 .permitAll()

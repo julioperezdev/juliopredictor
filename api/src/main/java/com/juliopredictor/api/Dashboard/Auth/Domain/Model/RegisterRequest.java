@@ -14,6 +14,11 @@ public class RegisterRequest {
         this.password = CONSTANT_PASSWORD;
         this.idRol = idRol;
     }
+    public RegisterRequest(String email, Long idRol) {
+        this.email = email;
+        this.password = CONSTANT_PASSWORD;
+        this.idRol = idRol;
+    }
 
     public Boolean validateFields(){
         return validateEmail() || validatePassword()  || validateIdRol();

@@ -4,9 +4,13 @@ import com.juliopredictor.api.Announcement.Email.Application.validateEmail.Adapt
 import com.juliopredictor.api.Announcement.Email.Application.validateEmail.Service.MailSenderServiceImplementation;
 import com.juliopredictor.api.Announcement.Email.Infrastructure.Gateway.SpringJavaMailer;
 import com.juliopredictor.api.Announcement.Email.Infrastructure.Gateway.ThymeleafMailContentBuilder;
+import com.juliopredictor.api.Dashboard.Auth.Application.ModelMapper.DecideAuthModelMapper;
 import com.juliopredictor.api.Dashboard.Auth.Application.ModelMapper.LoginModelMapper;
 import com.juliopredictor.api.Dashboard.Auth.Application.ModelMapper.RefreshTokenModelMapper;
 import com.juliopredictor.api.Dashboard.Auth.Application.ModelMapper.SignupModelMapper;
+import com.juliopredictor.api.Dashboard.Auth.Application.decideAuth.Adapter.DecideAuthAdapterRepository;
+import com.juliopredictor.api.Dashboard.Auth.Application.decideAuth.Delivery.DecideAuthEndPoints;
+import com.juliopredictor.api.Dashboard.Auth.Application.decideAuth.Service.DecideAuthServiceImplementation;
 import com.juliopredictor.api.Dashboard.Auth.Application.login.Adapter.LoginAdapterSecurity;
 import com.juliopredictor.api.Dashboard.Auth.Application.login.Delivery.LoginEndPoints;
 import com.juliopredictor.api.Dashboard.Auth.Application.login.Service.LoginServiceImplementation;
@@ -191,6 +195,11 @@ public class SpringDependenciesConfiguration extends WebSecurityConfigurerAdapte
         return new RefreshTokenModelMapper();
     }
 
+
+    @Bean
+    public DecideAuthModelMapper decideAuthModelMapper(){
+        return new DecideAuthModelMapper();
+    }
     /**
      * Auth/Application/signup
      */
@@ -263,6 +272,25 @@ public class SpringDependenciesConfiguration extends WebSecurityConfigurerAdapte
     }
 
     /**
+     * Auth/Application/decideAuth
+     */
+
+    @Bean
+    public DecideAuthEndPoints decideAuthEndPoints() throws Exception {
+        return new DecideAuthEndPoints(loginController(), signupController(), decideAuthServiceImplementation(), decideAuthModelMapper());
+    }
+    @Bean
+    public DecideAuthServiceImplementation decideAuthServiceImplementation(){
+        return new DecideAuthServiceImplementation(decideAuthAdapterRepository());
+    }
+
+    @Bean
+    public DecideAuthAdapterRepository decideAuthAdapterRepository(){
+        return new DecideAuthAdapterRepository(userDao, signupModelMapper());
+    }
+
+
+    /**
      * Auth/Infrastructure
      */
 
@@ -300,6 +328,8 @@ public class SpringDependenciesConfiguration extends WebSecurityConfigurerAdapte
                 .antMatchers("/api/currencies/**")
                 .permitAll()
                 .antMatchers("/api/predictor")
+                .permitAll()
+                .antMatchers("/api/decideAuth")
                 .permitAll()
                 .anyRequest()
                 .authenticated();

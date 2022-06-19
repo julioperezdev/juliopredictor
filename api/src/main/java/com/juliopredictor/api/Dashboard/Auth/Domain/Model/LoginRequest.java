@@ -9,6 +9,10 @@ public class LoginRequest {
         this.email = email;
         this.password = CONSTANT_PASSWORD;
     }
+    public LoginRequest(String email) {
+        this.email = email;
+        this.password = CONSTANT_PASSWORD;
+    }
 
     public String getEmail() {
         return email;

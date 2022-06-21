@@ -5,6 +5,10 @@ import com.juliopredictor.api.Dashboard.Auth.Domain.Model.DecideSignupLoginReque
 import com.juliopredictor.api.Dashboard.Auth.Domain.Model.User;
 import org.springframework.util.ObjectUtils;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+
 public class DecideAuthServiceImplementation implements DecideAuthService{
 
     private final DecideAuthAdapterRepository decideAuthAdapterRepository;
@@ -14,16 +18,23 @@ public class DecideAuthServiceImplementation implements DecideAuthService{
     }
 
     @Override
-    public Boolean validateIfUserExistToSignupOrLogin(DecideSignupLoginRequest decideSignupLoginRequest) {
+    public Map<Boolean, User> validateIfUserExistToSignupOrLogin(DecideSignupLoginRequest decideSignupLoginRequest) {
+        User userByEmail = null;
+        Map<Boolean, User> userThatNeedBeSignupIt = new HashMap<>();
+        userThatNeedBeSignupIt.put(Boolean.FALSE, null);
         try{
-            User userByEmail = decideAuthAdapterRepository.getUserByEmail(decideSignupLoginRequest.getEmail());
+            userByEmail = decideAuthAdapterRepository.getUserByEmail(decideSignupLoginRequest.getEmail());
             if(ObjectUtils.isEmpty(userByEmail)){
-                return Boolean.FALSE;
+                return userThatNeedBeSignupIt;
             }
+            if(userByEmail.isEnable()){
+                return Map.of(Boolean.FALSE, userByEmail);
+            }
+
         }catch (Exception error){
-            return Boolean.FALSE;
+            return userThatNeedBeSignupIt;
         }
-        return Boolean.TRUE;
+        return Map.of(Boolean.TRUE, userByEmail);
     }
 
 

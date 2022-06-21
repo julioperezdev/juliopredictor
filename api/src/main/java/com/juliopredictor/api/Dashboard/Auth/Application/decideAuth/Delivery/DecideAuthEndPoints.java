@@ -5,6 +5,9 @@ import com.juliopredictor.api.Dashboard.Auth.Application.decideAuth.Service.Deci
 import com.juliopredictor.api.Dashboard.Auth.Application.login.Delivery.LoginEndPoints;
 import com.juliopredictor.api.Dashboard.Auth.Application.signup.Delivery.SignupEndPoints;
 import com.juliopredictor.api.Dashboard.Auth.Domain.Model.*;
+import org.springframework.util.ObjectUtils;
+
+import java.util.Map;
 
 public class DecideAuthEndPoints {
 
@@ -21,13 +24,27 @@ public class DecideAuthEndPoints {
     }
 
     public Object decideIfSignupOrLogin(DecideSignupLoginRequest decideSignupLoginRequest){
-        Object result = decideAuthService.validateIfUserExistToSignupOrLogin(decideSignupLoginRequest)
+        Map<Boolean, User> validationData = decideAuthService.validateIfUserExistToSignupOrLogin(decideSignupLoginRequest);
+        boolean decision = validationData.containsKey(Boolean.TRUE);
+        Object result = decision
+                ? returnUserThatNotIsVerified(validationData.get(Boolean.TRUE))
+                : logicToSignupOrLogin(validationData.get(Boolean.FALSE), decideSignupLoginRequest);
+        /*Object result = decideAuthService.validateIfUserExistToSignupOrLogin(decideSignupLoginRequest).containsKey(Boolean.TRUE)
                 ? executeLoginEndPoint(decideSignupLoginRequest)
-                : executeSignupEndPoint(decideSignupLoginRequest);
+                : executeSignupEndPoint(decideSignupLoginRequest);*/
         System.out.println(result.toString());
         return result;
     }
 
+    private Object returnUserThatNotIsVerified(User user){
+        //create new dto to response only data that need the client
+        return user;
+    }
+    private Object logicToSignupOrLogin(User user, DecideSignupLoginRequest decideSignupLoginRequest){
+        return ObjectUtils.isEmpty(user)
+                ? executeSignupEndPoint(decideSignupLoginRequest)
+                :executeLoginEndPoint(decideSignupLoginRequest);
+    }
     private AuthenticationResponse executeLoginEndPoint(DecideSignupLoginRequest decideSignupLoginRequest){
         LoginRequest loginRequest = decideAuthModelMapper.emailToLoginRequest(decideSignupLoginRequest);
         return loginEndPoints.loginUser(loginRequest);

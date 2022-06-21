@@ -14,6 +14,6 @@ public class DecideAuthModelMapper {
     public RegisterRequest emailToRegisterRequest(DecideSignupLoginRequest decideSignupLoginRequest){
         return new RegisterRequest(
                 decideSignupLoginRequest.getEmail(),
-                1L);
+                2L);
     }
 }

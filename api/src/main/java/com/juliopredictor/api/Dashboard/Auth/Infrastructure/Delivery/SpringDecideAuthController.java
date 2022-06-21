@@ -6,6 +6,7 @@ import com.juliopredictor.api.Shared.Infrastructure.Delivery.RestResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,7 +18,7 @@ public class SpringDecideAuthController {
     private final DecideAuthEndPoints decideAuthEndPoints;
 
     @PostMapping
-    public RestResponse<Object> decideAuth(DecideSignupLoginRequest decideSignupLoginRequest){
+    public RestResponse<Object> decideAuth(@RequestBody DecideSignupLoginRequest decideSignupLoginRequest){
         Object result = decideAuthEndPoints.decideIfSignupOrLogin(decideSignupLoginRequest);
         return new RestResponse<>(HttpStatus.ACCEPTED, result);
     }

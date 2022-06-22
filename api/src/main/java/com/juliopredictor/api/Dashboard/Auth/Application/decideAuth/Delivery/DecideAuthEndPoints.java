@@ -29,16 +29,12 @@ public class DecideAuthEndPoints {
         Object result = decision
                 ? returnUserThatNotIsVerified(validationData.get(Boolean.TRUE))
                 : logicToSignupOrLogin(validationData.get(Boolean.FALSE), decideSignupLoginRequest);
-        /*Object result = decideAuthService.validateIfUserExistToSignupOrLogin(decideSignupLoginRequest).containsKey(Boolean.TRUE)
-                ? executeLoginEndPoint(decideSignupLoginRequest)
-                : executeSignupEndPoint(decideSignupLoginRequest);*/
         System.out.println(result.toString());
         return result;
     }
 
-    private Object returnUserThatNotIsVerified(User user){
-        //create new dto to response only data that need the client
-        return user;
+    private UserReducedResponse returnUserThatNotIsVerified(User user){
+        return decideAuthModelMapper.userToUserReducedResponse(user);
     }
     private Object logicToSignupOrLogin(User user, DecideSignupLoginRequest decideSignupLoginRequest){
         return ObjectUtils.isEmpty(user)

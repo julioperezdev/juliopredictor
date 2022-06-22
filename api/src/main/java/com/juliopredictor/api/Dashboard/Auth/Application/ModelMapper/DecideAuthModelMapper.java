@@ -1,8 +1,6 @@
 package com.juliopredictor.api.Dashboard.Auth.Application.ModelMapper;
 
-import com.juliopredictor.api.Dashboard.Auth.Domain.Model.DecideSignupLoginRequest;
-import com.juliopredictor.api.Dashboard.Auth.Domain.Model.LoginRequest;
-import com.juliopredictor.api.Dashboard.Auth.Domain.Model.RegisterRequest;
+import com.juliopredictor.api.Dashboard.Auth.Domain.Model.*;
 
 public class DecideAuthModelMapper {
 
@@ -15,5 +13,11 @@ public class DecideAuthModelMapper {
         return new RegisterRequest(
                 decideSignupLoginRequest.getEmail(),
                 2L);
+    }
+
+    public UserReducedResponse userToUserReducedResponse(User user){
+        return new UserReducedResponse(
+                user.getEmail(),
+                user.isEnable());
     }
 }

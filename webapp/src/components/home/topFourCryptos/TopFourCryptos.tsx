@@ -21,7 +21,7 @@ export const TopFourCryptos = ({authenticationStatus}) => {
             </div>
             <ul className="">
                 {returningTopFourCryptos().map(particular => (
-                <li>
+                <li key={particular.id}>
                     <p>{particular.rank}</p>
                     <p>{particular.symbol}</p>    
                     <p>{particular.name}</p>    

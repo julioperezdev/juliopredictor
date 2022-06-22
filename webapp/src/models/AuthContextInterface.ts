@@ -4,4 +4,5 @@ export interface AuthContextInterface {
     isAuthenticated: boolean,
     signupUser ?: any,
     loginUser ?: any,
+    decideAuth ?: any,
 }

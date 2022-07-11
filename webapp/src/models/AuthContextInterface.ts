@@ -2,7 +2,9 @@ export interface AuthContextInterface {
     email: string,
     token: string,
     isAuthenticated: boolean,
-    signupUser ?: any,
+    date: string
+    /*signupUser ?: any,*/
     loginUser ?: any,
     decideAuth ?: any,
+    verifyToken ?: any,
 }

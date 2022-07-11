@@ -30,10 +30,10 @@ public class SignupModelMapper {
                 new RegisterResponse("failed to generate user");
     }
 
-    public VerifyTokenResponse processedVerifyByTokenResponseToVerifyTokenResponse(Boolean processedVerifyByTokenResponse){
-        return processedVerifyByTokenResponse ?
-                new VerifyTokenResponse("user enabled") :
-                new VerifyTokenResponse("failed to enable user");
+    public VerifyTokenResponse processedVerifyByTokenResponseToVerifyTokenResponse(User userVerified){
+        return userVerified.isEnable() ?
+                new VerifyTokenResponse("user enabled", userVerified) :
+                new VerifyTokenResponse("failed to enable user", userVerified);
     }
 
     public UserEntity userModelToUserEntity(User user, UserRolEntity userRolEntity){

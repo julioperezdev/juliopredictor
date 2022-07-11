@@ -5,7 +5,7 @@ import {CryptoRankedByCmc} from "../../../models/Models"
 
 import "./FavoriteCrypto.css"
 
-export const FavoriteCrypto = ({authenticationStatus}) =>{
+export const FavoriteCrypto = ({authenticationStatus, decideAuth}) =>{
 
     const hasFavoriteCryptos = () => {
         var favoriteCrytos: Array<number> = [3];
@@ -34,7 +34,8 @@ export const FavoriteCrypto = ({authenticationStatus}) =>{
                             <p>Agregando tu email escoges favoritos</p>
                             <img src="image/alarm.png" alt="" />
                         </div>
-                        <EmailInput/>
+                        <EmailInput
+                        decideAuth = {decideAuth}/>
                     </div>
                     </>    
 

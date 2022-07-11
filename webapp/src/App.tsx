@@ -10,6 +10,8 @@ import AuthState from "./context/authContext/AuthState";
 
 import './App.css';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import AuthContext from "./context/authContext/AuthContext";
+import { VerificationPage } from "./pages/publics/verification/VerificationPage";
 
 const App = () => {
   return (
@@ -22,6 +24,7 @@ const App = () => {
         <Route path="/" element={<HomePage/>}/>
         <Route path="/crypto" element={<CurrenciesPage/>}/>
         <Route path="/favorite" element={<FavoritesPage/>}/>
+        <Route path="/verification/*" element={<VerificationPage/>}/>
         <Route path="*" element={<NotFoundPage/>}/>
       </Routes>
       </AuthState>

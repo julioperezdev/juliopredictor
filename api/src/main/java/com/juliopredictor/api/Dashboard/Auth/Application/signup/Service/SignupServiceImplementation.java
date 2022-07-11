@@ -64,7 +64,6 @@ public class SignupServiceImplementation implements SignupService{
         User userEnabled = signupAdapterRepository.updateStatusToEnableAUser(
                 verificationTokenByTokenFound.getUserId());
         if(Boolean.FALSE == userEnabled.isEnable()) throw new RuntimeException();
-        return signupModelMapper.processedVerifyByTokenResponseToVerifyTokenResponse(
-                userEnabled.isEnable());
+        return signupModelMapper.processedVerifyByTokenResponseToVerifyTokenResponse(userEnabled);
     }
 }

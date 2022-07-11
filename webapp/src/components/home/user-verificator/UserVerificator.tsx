@@ -4,10 +4,10 @@ import "./UserVerificator.css"
 import AuthContext from "../../../context/authContext/AuthContext"
 import { LoginRequestDto } from "../../../models/LoginRequestDto"
 
-export const UserVerificator = ({authenticationStatus}) =>{
+export const UserVerificator = ({authenticationStatus, decideAuth}) =>{
 
     
-    const {signupUser, decideAuth} = useContext(AuthContext);
+    //const {decideAuth} = useContext(AuthContext);
     
     const [useAddEmail, setUseAddEmail] = useState(false);
 
@@ -33,8 +33,8 @@ export const UserVerificator = ({authenticationStatus}) =>{
         //signupUser(request);
         ppp()
         */
-       const user : LoginRequestDto = {email : "perezjulioernesto@gmail.com"}
-        decideAuth(user)
+       //const user : LoginRequestDto = {email : "perezjulioernesto@gmail.com"}
+        //decideAuth(user)
     },[useAddEmail])
 
     
@@ -52,7 +52,8 @@ export const UserVerificator = ({authenticationStatus}) =>{
                         src="image/add.png"/>
                         <p>Agregar email</p>
                     </div>:
-                    <EmailInput/>}
+                    <EmailInput
+                    decideAuth = {decideAuth}/>}
                     <div>
                         <img 
                         src="image/cross.png" 

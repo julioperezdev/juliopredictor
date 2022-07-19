@@ -2,9 +2,9 @@ package com.juliopredictor.api.Dashboard.Auth.Domain.Model;
 
 public class VerifyTokenResponse extends AbstractResponse{
 
-    private User userVerified;
+    private UserReducedResponse userVerified;
 
-    public VerifyTokenResponse(String message, User userVerified) {
+    public VerifyTokenResponse(String message, UserReducedResponse userVerified) {
         super(message);
         this.userVerified = userVerified;
     }
@@ -13,11 +13,11 @@ public class VerifyTokenResponse extends AbstractResponse{
         super(message);
     }
 
-    public User getUserVerified() {
+    public UserReducedResponse getUserVerified() {
         return userVerified;
     }
 
-    public void setUserVerified(User userVerified) {
+    public void setUserVerified(UserReducedResponse userVerified) {
         this.userVerified = userVerified;
     }
 }

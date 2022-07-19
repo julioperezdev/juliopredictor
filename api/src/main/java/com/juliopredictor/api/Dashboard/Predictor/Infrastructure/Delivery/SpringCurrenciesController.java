@@ -16,7 +16,7 @@ public class SpringCurrenciesController {
 
     private final GetCurrenciesOrderedByCmcRankEndPoints getCurrenciesOrderedByCmcRankEndPoints;
 
-    @GetMapping
+    @GetMapping("/top300")
     public RestResponse<CoinMarketCapListTop300Response> getTop300ListByCmcRank() throws Exception {
         CoinMarketCapListTop300Response currenciesOrderedByCmcRank = getCurrenciesOrderedByCmcRankEndPoints.getCurrenciesOrderedByCmcRank();
         return new RestResponse<>(HttpStatus.FOUND, currenciesOrderedByCmcRank);

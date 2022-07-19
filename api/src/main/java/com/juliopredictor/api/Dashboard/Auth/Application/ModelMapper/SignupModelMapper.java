@@ -31,9 +31,10 @@ public class SignupModelMapper {
     }
 
     public VerifyTokenResponse processedVerifyByTokenResponseToVerifyTokenResponse(User userVerified){
+        UserReducedResponse userReducedResponse = new UserReducedResponse(userVerified.getEmail(), userVerified.isEnable());
         return userVerified.isEnable() ?
-                new VerifyTokenResponse("user enabled", userVerified) :
-                new VerifyTokenResponse("failed to enable user", userVerified);
+                new VerifyTokenResponse("user enabled", userReducedResponse) :
+                new VerifyTokenResponse("failed to enable user", userReducedResponse);
     }
 
     public UserEntity userModelToUserEntity(User user, UserRolEntity userRolEntity){

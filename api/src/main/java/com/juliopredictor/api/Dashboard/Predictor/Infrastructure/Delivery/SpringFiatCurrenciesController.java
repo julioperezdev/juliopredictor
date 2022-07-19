@@ -11,11 +11,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/currencies/fiat")
+@RequestMapping("/api/currencies")
 @AllArgsConstructor
 public class SpringFiatCurrenciesController {
 
-    @GetMapping
+    @GetMapping("/fiat")
     public RestResponse<Map<String, String>> getEnablesFiatCurrencies(){
         Map<String, String> enableFiatCurrencies = new HashMap<>();
         enableFiatCurrencies.put("United States Dollar", "USD");

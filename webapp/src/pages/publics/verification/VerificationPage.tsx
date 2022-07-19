@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import {Link } from 'react-router-dom'
 import AuthContext from "../../../context/authContext/AuthContext";
+import { LoginRequestDto } from "../../../models/LoginRequestDto";
 
 
 export const VerificationPage = () => {
 
-    const {verifyToken} = useContext(AuthContext);
+    const {verifyToken, decideAuth} = useContext(AuthContext);
 
     const [query, setQuery] = useState(false);
 
@@ -14,19 +15,20 @@ export const VerificationPage = () => {
         let url = new URL(urlEvent);
         let searchParams = new URLSearchParams(url.search);
         return searchParams.get('token');
-        //console.log(searchParams.get('c'));  // outputs "m2-m3-m4-m5"
+    }
+
+    const processToValidateAndThenLogin = async () => {
+        let tokenToChangeEnableStatus : string = getTokenByUrl();
+        await verifyToken(tokenToChangeEnableStatus);
+        const email : string = localStorage.getItem("email");
+        const user : LoginRequestDto = {email}
+        await decideAuth(user);
     }
 
 
     useEffect(() =>{
-        if(localStorage.getItem("isAuthenticated") === "true"){
-            setQuery(true);
-        }
-        if(localStorage.getItem("isAuthenticated") != "true"){
-            let tokenToChangeEnableStatus : string =  getTokenByUrl();
-            verifyToken(tokenToChangeEnableStatus);
-        }    
-    },[localStorage.getItem("isAuthenticated")])
+        processToValidateAndThenLogin();
+    },[])
 
     return(
         <>
@@ -35,14 +37,7 @@ export const VerificationPage = () => {
         to="/">
         <h1>Go home</h1>
         </Link>
-        {/* {!query ? <>hola</> : window.location.href = "http://localhost:3000"} */}
-        </>
-        /*
-        !query
-        ?<h1>estamos verificando<h1/>
-        :<Redirect to="/"/>
-        */
-        
+        </>        
     )
 }
 

@@ -1,4 +1,3 @@
-import React from "react";
 import { HeaderComponent } from "./components/common/header/HeaderComponent";
 
 import {HomePage} from "./pages/publics/home/HomePage";
@@ -10,13 +9,14 @@ import AuthState from "./context/authContext/AuthState";
 
 import './App.css';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom'
-import AuthContext from "./context/authContext/AuthContext";
 import { VerificationPage } from "./pages/publics/verification/VerificationPage";
+import CryptoCurrencyState from "./context/cryptoCurrencyContext/CryptoCurrencyState";
 
 const App = () => {
   return (
     <Router>
       <AuthState>
+      <CryptoCurrencyState>        
       <div className="headerComponent">
       <HeaderComponent/>
       </div>
@@ -27,6 +27,7 @@ const App = () => {
         <Route path="/verification/*" element={<VerificationPage/>}/>
         <Route path="*" element={<NotFoundPage/>}/>
       </Routes>
+      </CryptoCurrencyState>
       </AuthState>
     </Router>
   );

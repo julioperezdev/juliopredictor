@@ -9,12 +9,13 @@ export default (state, action) => {
     switch(type){
         case AUTHORIZING:
             localStorage.clear()
-            localStorage.setItem("email", payload.userVerified.username);
+            console.log(payload)
+            localStorage.setItem("email", payload.userVerified.email);
             localStorage.setItem("isAuthenticated", "true");
             return {
                 ...state,
                 isAuthenticated: true,
-                email: payload.userVerified.username,
+                email: payload.userVerified.email,
             }
         case SIGNUP:
             let payloadSignup : string = payload;
@@ -36,12 +37,16 @@ export default (state, action) => {
             localStorage.setItem("email", payloadLogin.username);
             localStorage.setItem("token", payloadLogin.authenticationToken);
             localStorage.setItem("isAuthenticated", "true");
+            localStorage.setItem("refreshToken", payloadLogin.refreshToken);
+            localStorage.setItem("expireAt", payloadLogin.expireAt);
             return {
                 ...state,
                 email: payloadLogin.username,
                 token: payloadLogin.authenticationToken,
                 isAuthenticated: true,
-                date: moment().format('LTS')
+                date: moment().format('LTS'),
+                refreshToken : payloadLogin.refreshToken,
+                expireAt : payloadLogin.expireAt,
             }
         case UNVALIDATED:
             let payloadUnvalidated : UserReducedResponse = payload;

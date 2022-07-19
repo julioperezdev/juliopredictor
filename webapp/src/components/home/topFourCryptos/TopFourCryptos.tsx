@@ -1,26 +1,49 @@
+import { useContext, useEffect, useState } from "react";
+import CryptoCurrencyContext from "../../../context/cryptoCurrencyContext/CryptoCurrencyContext";
 import {CryptoRankedByCmc} from "../../../models/Models"
 import "./TopFourCryptos.css"
-
+import {PulseLoader,} from "react-spinners";
 export const TopFourCryptos = ({authenticationStatus}) => {
 
-    const returningTopFourCryptos = () : Array<CryptoRankedByCmc> => {
-        return [
-            {id: 1,rank: 1,name: "Bitcoin", symbol: "BTC"},
-            {id: 2,rank: 2,name: "Etherium", symbol: "ETH"},
-            {id: 3,rank: 3,name: "Slow Love Potion", symbol: "SLP"},
-            {id: 4,rank: 4,name: "Juliocoin", symbol: "JUC"}
-        ];
+    const {getCoinMarketCapListTop300} = useContext(CryptoCurrencyContext);
+
+    let [loading, setLoading] = useState(true);
+    let [color, setColor] = useState("#B2A4FF");
+    const [topCoins, setTopCoins] = useState([]);
+
+    const returningTopFourCryptos = async () => {
+        await getCoinMarketCapListTop300();
+        await getByLocalStorageTopCoins();
     }
 
+    const getByLocalStorageTopCoins = async() =>{
+        const topCoinsByLocalStorage = await JSON.parse(localStorage.getItem("topCoins"));
+        setTopCoins(topCoinsByLocalStorage)
+        setLoading(false)
+    }
+
+    useEffect(() => {
+        if(!localStorage.getItem("topCoins")){
+            returningTopFourCryptos();
+        }
+        else if (localStorage.getItem("topCoins")){
+            getByLocalStorageTopCoins();
+        }
+    }, [localStorage.getItem("topCoins")])
     return(
-        <div className={"top-four-list-base top-four-list-base-".concat(authenticationStatus)}>
+        <>{
+            !topCoins || topCoins.length === 0 ?
+            <div>
+                <PulseLoader color={color} loading={loading} size={25} />
+            </div>:
+            <div className={"top-four-list-base top-four-list-base-".concat(authenticationStatus)}>
             <div>
                 <p>rank</p>
                 <p>symbol</p>    
                 <p>name</p>    
             </div>
             <ul className="">
-                {returningTopFourCryptos().map(particular => (
+                {topCoins.map(particular => (
                 <li key={particular.id}>
                     <p>{particular.rank}</p>
                     <p>{particular.symbol}</p>    
@@ -30,5 +53,6 @@ export const TopFourCryptos = ({authenticationStatus}) => {
                 ))}
             </ul>
         </div>
+        }</>
     )
 }

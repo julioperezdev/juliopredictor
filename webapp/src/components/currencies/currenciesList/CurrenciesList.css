@@ -1,0 +1,5 @@
+.currencies-list-base{
+    display: grid;
+    width: 80%;
+    justify-content: center;
+}

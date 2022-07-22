@@ -1,14 +1,18 @@
 .particular-currency-base{
     display: grid;
+    width: 60vw;
     grid-template-columns: repeat(5, 20%);
     align-items: center;
+    justify-items: center;
     border: 1px solid rgb(235, 235, 235);
     box-shadow: 3px 2px 10px rgb(253, 233, 255);
     border-radius: 10px;
     margin: 2px 0;
-    width: 1200px;
     text-align: center;
+}
 
+.particular-currency-base:hover{
+    background-color: rgb(230, 203, 255);
 }
 
 .particular-currency-base > img{

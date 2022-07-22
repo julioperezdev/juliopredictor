@@ -4,3 +4,8 @@
     height: 40vh;
     align-content: center;
 }
+
+.currencies-page-currencies-list{
+    display: grid;
+    justify-content: center;
+}

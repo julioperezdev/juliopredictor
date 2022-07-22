@@ -23,14 +23,12 @@ export const ParticularCurrency = (particularCurrency : CoinMarketCapMapEntity) 
     }
 
     const addFavoriteCryptoLocalStorage = async () =>{
-        let favoritesLocalStorage : Array<string>;
+        let favoritesLocalStorage : Array<string> = [];
         if(localStorage.getItem("favoritesCryptos") != null){
             favoritesLocalStorage = await JSON.parse(localStorage.getItem("favoritesCryptos"));
         }
-        console.log(particularCurrency.symbol)
         let symbol : string = particularCurrency.symbol;
-        favoritesLocalStorage.push(...favoritesLocalStorage,symbol);
-        console.log(favoritesLocalStorage)
+        favoritesLocalStorage.push(symbol);  
         localStorage.setItem("favoritesCryptos", JSON.stringify(favoritesLocalStorage));
         setHasFavorite(true);
     }
@@ -38,7 +36,9 @@ export const ParticularCurrency = (particularCurrency : CoinMarketCapMapEntity) 
     const depurateFavoriteCryptoLocalStorage = async () =>{
         let favoritesLocalStorage : Array<string> = await JSON.parse(localStorage.getItem("favoritesCryptos"));
         favoritesLocalStorage.filter( particularFavorites => particularFavorites != particularCurrency.symbol);
-        localStorage.setItem("favoritesCryptos", JSON.stringify(favoritesLocalStorage));
+        let favoritesLocalStorageFiltered : Array<string> = favoritesLocalStorage.filter( particularFavorites => particularFavorites != particularCurrency.symbol);
+        localStorage.removeItem("favoritesCryptos");
+        localStorage.setItem("favoritesCryptos", JSON.stringify(favoritesLocalStorageFiltered));
         setHasFavorite(false);
     }
     
@@ -51,16 +51,14 @@ export const ParticularCurrency = (particularCurrency : CoinMarketCapMapEntity) 
     return(
         <div 
         className="particular-currency-base" 
-        key={particularCurrency.id}
-        onClick={() => onClickToChangeFavorite()}>
+        key={particularCurrency.id}>
             <p>{particularCurrency.rank}</p>
             <p>{particularCurrency.symbol}</p>    
             <p>{particularCurrency.name}</p>
-            {/* <img src="/image/heart-red.png" alt="" />   
-            <img src="" alt="" />     */}
             {hasFavorite 
-            ? <img src="/image/heart-red.png" alt="" /> 
-            : <img src="/image/heart.png" alt="" />}
+            ? <img onClick={() => onClickToChangeFavorite()} src="/image/heart-red.png" alt="" /> 
+            : <img onClick={() => onClickToChangeFavorite()} src="/image/heart-purple.png" alt="" />}
+            <img src="/image/arrow-right-purple.png" alt="" />
         </div>
     )
 } 

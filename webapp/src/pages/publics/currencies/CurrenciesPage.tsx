@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState, CSSProperties } from "react"
+import { useContext, useEffect, useState } from "react"
 import CryptoCurrencyContext from "../../../context/cryptoCurrencyContext/CryptoCurrencyContext";
 import {PulseLoader} from "react-spinners";
 import {CurrenciesList} from "../../../components/currencies/currenciesList/CurrenciesList"
@@ -17,14 +17,14 @@ export const CurrenciesPage = () =>{
 
     const renderCoinMarketCapListTop300 = async() =>{
         await getCoinMarketCapListTop300();
-        const topCoinsByLocalStorage : Array<CoinMarketCapMapEntity> = JSON.parse(localStorage.getItem("allCoins"));
+        const topCoinsByLocalStorage : Array<CoinMarketCapMapEntity> = await JSON.parse(localStorage.getItem("allCoins"));
         setCurrencies(topCoinsByLocalStorage);
         setLoading(false);
     }
     useEffect(() => {
         renderCoinMarketCapListTop300()
 
-    }, [])
+    }, [localStorage.getItem("allCoins")])
 
     return(
         <ul>
@@ -33,8 +33,10 @@ export const CurrenciesPage = () =>{
             <div className="currencies-page-sweet-loading">
                 <PulseLoader color={color} loading={loading} size={25} />
             </div> :
-            <CurrenciesList
-            currencies={currencies}/>
+            <div className="currencies-page-currencies-list">
+                <CurrenciesList
+                currencies={currencies}/>
+            </div>
             }
         </ul>
     )

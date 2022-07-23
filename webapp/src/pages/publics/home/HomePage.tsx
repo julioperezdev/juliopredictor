@@ -1,14 +1,13 @@
 import { useContext, useEffect, useState } from "react"
 import AuthContext from "../../../context/authContext/AuthContext"
-
 import {UserVerificator} from "../../../components/home/user-verificator/UserVerificator"
 import {FavoriteCrypto} from "../../../components/home/favorite-crypto/FavoriteCrypto"
 import {TopFourCryptos} from "../../../components/home/topFourCryptos/TopFourCryptos"
 
 import "./HomePage.css"
 
-export const HomePage = () =>{
-    
+export const HomePage = ({authenticationStatus,decideAuth,decideStatus}) =>{
+    /*
     const UNAUTHENTICATED : number = 0;
     const AUTHENTICATION_IN_PROCESS : number = 1;
     const AUTHENTICATED : number = 2;
@@ -36,6 +35,9 @@ export const HomePage = () =>{
             setAuthenticationStatus(AUTHENTICATED);
         }
     }
+    */
+
+
 
     useEffect(() =>
     {decideStatus()},

@@ -7,7 +7,7 @@ import "./CurrenciesPage.css"
 import { CoinMarketCapMapEntity } from "../../../models/CoinMarketCapMapEntity";
 
 
-export const CurrenciesPage = () =>{
+export const CurrenciesPage = ({authenticationStatus}) =>{
 
     const [currencies, setCurrencies] = useState(null);
     let [loading, setLoading] = useState(true);
@@ -35,6 +35,7 @@ export const CurrenciesPage = () =>{
             </div> :
             <div className="currencies-page-currencies-list">
                 <CurrenciesList
+                authenticationStatus={authenticationStatus}
                 currencies={currencies}/>
             </div>
             }

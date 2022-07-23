@@ -3,3 +3,5 @@ export const FavoritesPage = () =>{
         <>favorite</>
     )
 }
+
+//FavoritesCryptos

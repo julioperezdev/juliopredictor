@@ -3,12 +3,20 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import AuthState from './context/authContext/AuthState';
+import CryptoCurrencyState from './context/cryptoCurrencyContext/CryptoCurrencyState';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
+    <>
+    <AuthState>
+    <CryptoCurrencyState>
     <App />
+    </CryptoCurrencyState>  
+    </AuthState>
+    </>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -54,7 +54,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage authenticationStatus={authenticationStatus} decideAuth={decideAuth} decideStatus = {decideStatus}/>}/>
         <Route path="/crypto" element={<CurrenciesPage authenticationStatus={authenticationStatus}/>}/>
-        <Route path="/favorite" element={<FavoritesPage/>}/>
+        <Route path="/favorite" element={<FavoritesPage authenticationStatus={authenticationStatus}/>}/>
         <Route path="/verification/*" element={<VerificationPage/>}/>
         <Route path="*" element={<NotFoundPage/>}/>
       </Routes>

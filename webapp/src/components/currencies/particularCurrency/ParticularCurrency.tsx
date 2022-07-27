@@ -28,7 +28,6 @@ export const ParticularCurrency = (particularCurrency : CoinMarketCapMapEntity) 
         if(localStorage.getItem("favoritesCryptos") != null){
             favoritesLocalStorage = await JSON.parse(localStorage.getItem("favoritesCryptos"));
         }
-        //let symbol : string = particularCurrency.symbol;
         let favoritesCryptos : FavoritesCryptos = {
             name : particularCurrency.name,
             symbol : particularCurrency.symbol
@@ -40,10 +39,11 @@ export const ParticularCurrency = (particularCurrency : CoinMarketCapMapEntity) 
 
     const depurateFavoriteCryptoLocalStorage = async () =>{
         let favoritesLocalStorage : Array<FavoritesCryptos> = await JSON.parse(localStorage.getItem("favoritesCryptos"));
-        //favoritesLocalStorage.filter( particularFavorites => particularFavorites.symbol != particularCurrency.symbol);
         let favoritesLocalStorageFiltered : Array<FavoritesCryptos> = favoritesLocalStorage.filter( particularFavorites => particularFavorites.symbol != particularCurrency.symbol);
         localStorage.removeItem("favoritesCryptos");
-        localStorage.setItem("favoritesCryptos", JSON.stringify(favoritesLocalStorageFiltered));
+        if(favoritesLocalStorageFiltered.length > 0){
+            localStorage.setItem("favoritesCryptos", JSON.stringify(favoritesLocalStorageFiltered));
+        }
         setHasFavorite(false);
     }
     

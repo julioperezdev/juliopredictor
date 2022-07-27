@@ -27,3 +27,9 @@
     overflow:hidden;
     overflow-y:auto;
 }
+
+
+.crypto-list-ul > li > img{ 
+    width: 30px;
+    margin: 0 auto;
+}

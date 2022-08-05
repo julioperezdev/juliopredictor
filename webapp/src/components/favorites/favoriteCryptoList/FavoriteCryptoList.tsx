@@ -1,14 +1,14 @@
+import { CoinMarketCapMapEntity } from "models/CoinMarketCapMapEntity";
 import { FavoritesCryptos } from "models/FavoritesCryptos";
-import { useState } from "react";
-import { useEffect } from "react";
-import {CryptoRankedByCmc} from "../../../models/Models"
-import "./CryptoList.css"
+import { useEffect, useState } from "react";
 
-export const CryptoList = () =>{
+export default function FavoriteCryptoList(){
+    const [favorites, setFavorites] = useState<CoinMarketCapMapEntity>(null);
+    const [hasFavorite, setHasFavorite] = useState<boolean>(false);
 
+    const [favoriteChange, setFavoriteChange] = useState<boolean>(false);
     const [favoritesCryptos, setFavoritesCryptos] = useState([]);
     const [hasFavoritesCryptos, setHasFavoritesCryptos] = useState(false)
-    const [favoriteChange, setFavoriteChange] = useState<boolean>(false);
 
     const getFavoriteCryptoFromLocalStorage = async() =>{
         if(localStorage.getItem("favoritesCryptos") != null){
@@ -33,27 +33,16 @@ export const CryptoList = () =>{
     }
 
     useEffect(() =>{getFavoriteCryptoFromLocalStorage()},[favoriteChange])
-    
-    return (
-        <>{
-            hasFavoritesCryptos
-            ?<div className="crypto-list-base">
-                <div>
-                    <p></p>    
-                    <p>FAVORITES</p>    
-                    <p></p>
-                </div>
-                <ul className="crypto-list-ul">
-                    {favoritesCryptos.map(particular => (
-                    <li>
-                        <p>{particular.symbol}</p>    
-                        <p>{particular.name}</p>    
-                        <img onClick={() => depurateFavoriteCryptoLocalStorage(particular)} src="/image/heart-red.png" alt="" /> 
-                    </li>
-                    ))}
-                </ul>
-            </div>
-            :<p>no tiene favoritos</p>    
-        }</>
+    return(
+        <div>
+            {favoritesCryptos.map(particular => (
+                <li>
+                    <p>{particular.symbol}</p>    
+                    <p>{particular.name}</p>    
+                    <img onClick={() => depurateFavoriteCryptoLocalStorage(particular)} src="/image/heart-red.png" alt="" /> 
+                    <img src="/image/arrow-right-purple.png" alt="" />
+                </li>
+            ))}
+        </div>
     )
 }

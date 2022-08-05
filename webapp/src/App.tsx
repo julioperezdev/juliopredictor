@@ -4,6 +4,7 @@ import {HomePage} from "./pages/publics/home/HomePage";
 import {CurrenciesPage} from "./pages/publics/currencies/CurrenciesPage"
 import {FavoritesPage} from "./pages/publics/favorites/FavoritesPage"
 import {NotFoundPage} from "./pages/publics/notFound/NotFoundPage"
+import CryptoPage from "pages/publics/crypto/CryptoPage";
 
 import AuthState from "./context/authContext/AuthState";
 

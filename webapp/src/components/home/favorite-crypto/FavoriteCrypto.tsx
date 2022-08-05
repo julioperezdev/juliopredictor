@@ -12,17 +12,6 @@ export const FavoriteCrypto = ({authenticationStatus, decideAuth}) =>{
         return favoriteCrytos.length !== 0;
     }
 
-    const returningFavoriteCryptosByUser = () : Array<CryptoRankedByCmc> => {
-        return [
-            {id: 1,rank: 1,name: "Bitcoin", symbol: "BTC"},
-            {id: 2,rank: 2,name: "Etherium", symbol: "ETH"},
-            {id: 3,rank: 1,name: "Bitcoin", symbol: "BTC"},
-            {id: 4,rank: 1,name: "Bitcoin", symbol: "BTC"},
-            {id: 5,rank: 1,name: "Bitcoin", symbol: "BTC"},
-            {id: 6,rank: 1,name: "Bitcoin", symbol: "BTC"},
-            {id: 7,rank: 1,name: "Bitcoin", symbol: "BTC"} 
-        ];
-    }
     return(
         <div className={"favorite-crypto-base favorite-crypto-base-".concat(authenticationStatus.toString())}>
             {(() => {
@@ -55,8 +44,7 @@ export const FavoriteCrypto = ({authenticationStatus, decideAuth}) =>{
                             <img src="/image/add.png" alt="" />
                         </>
                         :
-                        <CryptoList
-                        favoriteCryptosByUser = {returningFavoriteCryptosByUser()}/>}
+                        <CryptoList/>}
                     </div>
                     </>
                 }})()}

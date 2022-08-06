@@ -27,7 +27,7 @@ export const CurrenciesPage = ({authenticationStatus}) =>{
     }, [localStorage.getItem("allCoins")])
 
     return(
-        <ul>
+        <ul className="currencies-page-base">
             {
             !currencies ? 
             <div className="currencies-page-sweet-loading">

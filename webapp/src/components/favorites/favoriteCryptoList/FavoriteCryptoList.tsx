@@ -1,20 +1,17 @@
-import { CoinMarketCapMapEntity } from "models/CoinMarketCapMapEntity";
 import { FavoritesCryptos } from "models/FavoritesCryptos";
 import { useEffect, useState } from "react";
 
+import "./FavoriteCryptoList.css"
+
 export default function FavoriteCryptoList(){
-    const [favorites, setFavorites] = useState<CoinMarketCapMapEntity>(null);
-    const [hasFavorite, setHasFavorite] = useState<boolean>(false);
 
     const [favoriteChange, setFavoriteChange] = useState<boolean>(false);
     const [favoritesCryptos, setFavoritesCryptos] = useState([]);
-    const [hasFavoritesCryptos, setHasFavoritesCryptos] = useState(false)
 
     const getFavoriteCryptoFromLocalStorage = async() =>{
         if(localStorage.getItem("favoritesCryptos") != null){
             let favoritesLocalStorage : Array<FavoritesCryptos> = await JSON.parse(localStorage.getItem("favoritesCryptos"));
             setFavoritesCryptos(favoritesLocalStorage);
-            setHasFavoritesCryptos(true);
         }
     }
 
@@ -27,14 +24,13 @@ export default function FavoriteCryptoList(){
         }
         if(favoritesLocalStorageFiltered.length === 0){
             setFavoritesCryptos([]);
-            setHasFavoritesCryptos(false);
         }
         setFavoriteChange(!favoriteChange);
     }
 
     useEffect(() =>{getFavoriteCryptoFromLocalStorage()},[favoriteChange])
     return(
-        <div>
+        <div className="favorite_crypto_list_base">
             {favoritesCryptos.map(particular => (
                 <li>
                     <p>{particular.symbol}</p>    

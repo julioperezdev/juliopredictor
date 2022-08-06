@@ -1,0 +1,48 @@
+.favorite_crypto_list_base{
+    display: grid;
+    justify-content: center;
+    margin-top: 30px;
+    height: 85vh;
+    align-content: flex-start;
+    overflow:hidden;
+    overflow-y:auto;
+}
+
+.favorite_crypto_list_base > li{
+    list-style: none;
+    display: grid;
+    width: 90vw;
+    max-height: 80px;
+    grid-template-columns: repeat(4, 25%);
+    align-items: center;
+    justify-items: center;
+    border: 1px solid rgb(235, 235, 235);
+    box-shadow: 3px 2px 10px rgb(253, 233, 255);
+    border-radius: 10px;
+    margin: 2px 0;
+    text-align: center;
+}
+
+.favorite_crypto_list_base > li > p{
+    font-size: 13px;
+}
+
+
+.favorite_crypto_list_base > li > img{
+    width: 20px;
+}
+
+@media only screen and (min-width: 480px) {
+    .favorite_crypto_list_base > li{
+        width: 80vw;
+    }
+    
+    .favorite_crypto_list_base > li > p{
+        font-size: 14px;
+    }
+    
+    
+    .favorite_crypto_list_base > li > img{
+        width: 30px;
+    }
+}

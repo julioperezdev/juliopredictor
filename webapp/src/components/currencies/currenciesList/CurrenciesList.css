@@ -1,3 +1,9 @@
 .currencies-list-base{
     display: grid;
+    height: 85vh;
+    overflow:hidden;
+    overflow-y:auto;
+    justify-items: center !important;
+    list-style: none;
+    padding-left: 0;
 }

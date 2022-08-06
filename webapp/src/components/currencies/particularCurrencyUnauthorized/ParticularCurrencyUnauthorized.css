@@ -1,6 +1,6 @@
 .particular-currency-unauthorized-base{
     display: grid;
-    width: 60vw;
+    width: 90vw;
     grid-template-columns: repeat(4, 25%);
     align-items: center;
     justify-items: center;
@@ -11,10 +11,28 @@
     text-align: center;
 }
 
+.particular-currency-unauthorized-base > p{
+    font-size: 13px;
+}
+
 .particular-currency-unauthorized-base:hover{
     background-color: rgb(230, 203, 255);
 }
 
 .particular-currency-unauthorized-base > img{
-    width: 30px;
+    width: 20px;
+}
+
+@media only screen and (min-width: 480px) {
+    .particular-currency-unauthorized-base{
+        width: 80vw;
+    }
+    
+    .particular-currency-unauthorized-base > p{
+        font-size: 14px;
+    }
+
+    .particular-currency-unauthorized-base > img{
+        width: 30px;
+    }
 }

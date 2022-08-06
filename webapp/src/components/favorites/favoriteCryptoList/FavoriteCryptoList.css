@@ -28,7 +28,7 @@
 }
 
 
-.favorite_crypto_list_base > li > img{
+.favorite_crypto_list_image{
     width: 20px;
 }
 
@@ -42,7 +42,7 @@
     }
     
     
-    .favorite_crypto_list_base > li > img{
+    .favorite_crypto_list_image{
         width: 30px;
     }
 }

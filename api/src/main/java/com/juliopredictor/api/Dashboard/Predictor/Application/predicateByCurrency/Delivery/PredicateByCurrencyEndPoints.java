@@ -15,7 +15,7 @@ public class PredicateByCurrencyEndPoints {
         this.predicateByCurrencyService = predicateByCurrencyService;
     }
 
-    public Map<Boolean, UncalculatePrediction> getPredication(CoinMarketCapPredictorRequest coinMarketCapPredictorRequest){
+    public UncalculatePrediction getPredication(CoinMarketCapPredictorRequest coinMarketCapPredictorRequest){
         return predicateByCurrencyService.getCurrencyWithPrediction(coinMarketCapPredictorRequest);
     }
 }

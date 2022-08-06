@@ -6,5 +6,5 @@ import com.juliopredictor.api.Dashboard.Predictor.Infrastructure.Gateway.CoinMar
 import java.util.Map;
 
 public interface PredicateByCurrency {
-    Map<Boolean, UncalculatePrediction> getCurrencyWithPrediction(CoinMarketCapPredictorRequest coinMarketCapPredictorRequest);
+    UncalculatePrediction getCurrencyWithPrediction(CoinMarketCapPredictorRequest coinMarketCapPredictorRequest);
 }

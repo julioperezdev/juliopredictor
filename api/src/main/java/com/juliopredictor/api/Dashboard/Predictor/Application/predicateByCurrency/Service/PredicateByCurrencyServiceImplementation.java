@@ -26,12 +26,12 @@ public class PredicateByCurrencyServiceImplementation implements PredicateByCurr
     }
 
     @Override
-    public Map<Boolean, UncalculatePrediction> getCurrencyWithPrediction(CoinMarketCapPredictorRequest coinMarketCapPredictorRequest) {
+    public UncalculatePrediction getCurrencyWithPrediction(CoinMarketCapPredictorRequest coinMarketCapPredictorRequest) {
         UncalculatePrediction currencyWithHistoricalPrices = predicateByCurrencyAdapter.getCurrencyWithHistoricalPrices(coinMarketCapPredictorRequest);
         return calculatePredictionByCurrency(currencyWithHistoricalPrices);
     }
 
-    private Map<Boolean, UncalculatePrediction> calculatePredictionByCurrency(UncalculatePrediction currencyWithHistoricalPrices){
+    private UncalculatePrediction calculatePredictionByCurrency(UncalculatePrediction currencyWithHistoricalPrices){
         Boolean calculatedPrediction = null;
         if(hasHighPositiveChange(currencyWithHistoricalPrices)){
             System.out.println("--> hasHighPositiveChange");
@@ -48,9 +48,8 @@ public class PredicateByCurrencyServiceImplementation implements PredicateByCurr
         }
         System.out.println(calculatedPrediction.toString());
         Map<Boolean, UncalculatePrediction> predictor = new HashMap<>();
-        predictor.put(calculatedPrediction, currencyWithHistoricalPrices);
-        return predictor;
-
+        currencyWithHistoricalPrices.setBull(calculatedPrediction);
+        return currencyWithHistoricalPrices;
     }
 
     private Boolean calculateHighPositiveChangeIn24Hrs(UncalculatePrediction currencyWithHistoricalPrices){

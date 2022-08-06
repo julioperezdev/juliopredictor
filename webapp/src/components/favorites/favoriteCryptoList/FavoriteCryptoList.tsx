@@ -1,5 +1,6 @@
 import { FavoritesCryptos } from "models/FavoritesCryptos";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import "./FavoriteCryptoList.css"
 
@@ -35,8 +36,14 @@ export default function FavoriteCryptoList(){
                 <li>
                     <p>{particular.symbol}</p>    
                     <p>{particular.name}</p>    
-                    <img onClick={() => depurateFavoriteCryptoLocalStorage(particular)} src="/image/heart-red.png" alt="" /> 
-                    <img src="/image/arrow-right-purple.png" alt="" />
+                    <img className="favorite_crypto_list_image"  onClick={() => depurateFavoriteCryptoLocalStorage(particular)} src="/image/heart-red.png" alt="" /> 
+                    <Link
+                    to={`/crypto/${particular.id}`}>
+                    <img 
+                    className="favorite_crypto_list_image" 
+                    src="/image/arrow-right-purple.png"/>
+                    </Link>
+                    
                 </li>
             ))}
         </div>

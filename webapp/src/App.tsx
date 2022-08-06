@@ -4,6 +4,7 @@ import {HomePage} from "./pages/publics/home/HomePage";
 import {CurrenciesPage} from "./pages/publics/currencies/CurrenciesPage"
 import {FavoritesPage} from "./pages/publics/favorites/FavoritesPage"
 import {NotFoundPage} from "./pages/publics/notFound/NotFoundPage"
+import PredicatorPage from "pages/publics/predictor/PredictorPage";
 import CryptoPage from "pages/publics/crypto/CryptoPage";
 
 import AuthState from "./context/authContext/AuthState";
@@ -56,6 +57,7 @@ const App = () => {
         <Route path="/" element={<HomePage authenticationStatus={authenticationStatus} decideAuth={decideAuth} decideStatus = {decideStatus}/>}/>
         <Route path="/crypto" element={<CurrenciesPage authenticationStatus={authenticationStatus}/>}/>
         <Route path="/favorite" element={<FavoritesPage authenticationStatus={authenticationStatus}/>}/>
+        <Route path="/crypto/:id" element={<PredicatorPage authenticationStatus={authenticationStatus}/>}/>
         <Route path="/verification/*" element={<VerificationPage/>}/>
         <Route path="*" element={<NotFoundPage/>}/>
       </Routes>

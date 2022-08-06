@@ -20,9 +20,9 @@ public class SpringPredictorController {
 
     private final PredicateByCurrencyEndPoints predicateByCurrencyEndPoints;
 
-    @GetMapping
-    public RestResponse<Map<Boolean, UncalculatePrediction>> predictor(@RequestBody CoinMarketCapPredictorRequest coinMarketCapPredictorRequest){
-        Map<Boolean, UncalculatePrediction> predication = predicateByCurrencyEndPoints.getPredication(coinMarketCapPredictorRequest);
+    @PostMapping
+    public RestResponse<UncalculatePrediction> predictor(@RequestBody CoinMarketCapPredictorRequest coinMarketCapPredictorRequest){
+        UncalculatePrediction predication = predicateByCurrencyEndPoints.getPredication(coinMarketCapPredictorRequest);
         return new RestResponse<>(HttpStatus.GONE, "Prediction was generated",predication);
     }
 }

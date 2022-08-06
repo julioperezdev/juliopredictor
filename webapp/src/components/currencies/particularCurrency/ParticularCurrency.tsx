@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react"
+import { Link } from "react-router-dom";
 import { CoinMarketCapMapEntity } from "../../../models/CoinMarketCapMapEntity";
 import { FavoritesCryptos } from "../../../models/FavoritesCryptos";
 import "./ParticularCurrency.css"
@@ -29,6 +30,7 @@ export const ParticularCurrency = (particularCurrency : CoinMarketCapMapEntity) 
             favoritesLocalStorage = await JSON.parse(localStorage.getItem("favoritesCryptos"));
         }
         let favoritesCryptos : FavoritesCryptos = {
+            id : particularCurrency.id,
             name : particularCurrency.name,
             symbol : particularCurrency.symbol
         }
@@ -61,9 +63,15 @@ export const ParticularCurrency = (particularCurrency : CoinMarketCapMapEntity) 
             <p>{particularCurrency.symbol}</p>    
             <p>{particularCurrency.name}</p>
             {hasFavorite 
-            ? <img onClick={() => onClickToChangeFavorite()} src="/image/heart-red.png" alt="" /> 
-            : <img onClick={() => onClickToChangeFavorite()} src="/image/heart-purple.png" alt="" />}
-            <img src="/image/arrow-right-purple.png" alt="" />
+            ? <img className="particular-currency-image" onClick={() => onClickToChangeFavorite()} src="/image/heart-red.png" alt="" /> 
+            : <img className="particular-currency-image" onClick={() => onClickToChangeFavorite()} src="/image/heart-purple.png" alt="" />}
+            <Link
+            to={`/crypto/${particularCurrency.id}`}>
+            <img 
+            className="particular-currency-image"
+            src="/image/arrow-right-purple.png" />
+            </Link>
+            
         </div>
     )
 } 

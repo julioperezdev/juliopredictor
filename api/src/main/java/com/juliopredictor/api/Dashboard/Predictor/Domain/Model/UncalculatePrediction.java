@@ -3,7 +3,7 @@ package com.juliopredictor.api.Dashboard.Predictor.Domain.Model;
 import com.juliopredictor.api.Dashboard.Predictor.Infrastructure.Gateway.CoinMarketCap.responseDto.CoinMarketCapQuotesBaseResponse;
 
 public class UncalculatePrediction {
-
+    private boolean isBull;
     private Double price;
     private Long volume_24h;
     private Double volume_change_24h;
@@ -28,6 +28,27 @@ public class UncalculatePrediction {
         this.logo = logo;
     }
 
+    public UncalculatePrediction(boolean isBull, Double price, Long volume_24h, Double volume_change_24h, Double percent_change_1h, Double percent_change_24h, Double percent_change_7d, Double percent_change_30d, Double percent_change_60d, Double percent_change_90d, String logo) {
+        this.isBull = isBull;
+        this.price = price;
+        this.volume_24h = volume_24h;
+        this.volume_change_24h = volume_change_24h;
+        this.percent_change_1h = percent_change_1h;
+        this.percent_change_24h = percent_change_24h;
+        this.percent_change_7d = percent_change_7d;
+        this.percent_change_30d = percent_change_30d;
+        this.percent_change_60d = percent_change_60d;
+        this.percent_change_90d = percent_change_90d;
+        this.logo = logo;
+    }
+
+    public boolean isBull() {
+        return isBull;
+    }
+
+    public void setBull(boolean bull) {
+        isBull = bull;
+    }
     public Double getPrice() {
         return price;
     }

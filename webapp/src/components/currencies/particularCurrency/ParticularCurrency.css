@@ -19,7 +19,7 @@
     background-color: rgb(230, 203, 255);
 }
 
-.particular-currency-base > img{
+.particular-currency-image{
     width: 20px;
 }
 
@@ -32,7 +32,7 @@
         font-size: 14px;
     }    
     
-    .particular-currency-base > img{
+    .particular-currency-image{
         width: 30px;
     }
 }

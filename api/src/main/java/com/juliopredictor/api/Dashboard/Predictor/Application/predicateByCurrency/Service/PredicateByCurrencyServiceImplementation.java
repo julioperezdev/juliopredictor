@@ -34,19 +34,14 @@ public class PredicateByCurrencyServiceImplementation implements PredicateByCurr
     private UncalculatePrediction calculatePredictionByCurrency(UncalculatePrediction currencyWithHistoricalPrices){
         Boolean calculatedPrediction = null;
         if(hasHighPositiveChange(currencyWithHistoricalPrices)){
-            System.out.println("--> hasHighPositiveChange");
             calculatedPrediction = calculateHighPositiveChangeIn24Hrs(currencyWithHistoricalPrices);
         }else if(hasBalanceChange(currencyWithHistoricalPrices)){
-            System.out.println("--> hasBalanceChange");
             calculatedPrediction = calculateBalanceChangeIn24Hrs(currencyWithHistoricalPrices);
         }else if(hasLowNegativeChange(currencyWithHistoricalPrices)){
-            System.out.println("--> hasLowNegativeChange");
             calculatedPrediction = calculateLowNegativeChangeIn24Hrs(currencyWithHistoricalPrices);
         }else if(hasHighNegativeChange(currencyWithHistoricalPrices)){
-            System.out.println("--> hasHighNegativeChange");
             calculatedPrediction = calculateHighNegativeChangeIn24Hrs(currencyWithHistoricalPrices);
         }
-        System.out.println(calculatedPrediction.toString());
         Map<Boolean, UncalculatePrediction> predictor = new HashMap<>();
         currencyWithHistoricalPrices.setBull(calculatedPrediction);
         return currencyWithHistoricalPrices;
@@ -112,7 +107,6 @@ public class PredicateByCurrencyServiceImplementation implements PredicateByCurr
         allPercentages.add(calculatePercentage(currencyWithHistoricalPrices.getPercent_change_90d(), ninetyDays));
 
         Double averageOfHistoricalPrices = averageOfAllPercentages(allPercentages);
-        System.out.println(averageOfHistoricalPrices);
         return isBull(averageOfHistoricalPrices);
 
 

@@ -24,14 +24,14 @@ public class SpringFiatCurrenciesController {
     public RestResponse<List<FiatCurrencies>> getEnablesFiatCurrencies(){
         log.info("has been calling getEnablesFiatCurrencies");
         List<FiatCurrencies> fiatCurrencies = new ArrayList<>();
-        fiatCurrencies.add(new FiatCurrencies("United States Dollar", "USD"));
-        fiatCurrencies.add(new FiatCurrencies("Argentine Peso", "ARS"));
-        fiatCurrencies.add(new FiatCurrencies("Australian Dollar", "AUD"));
-        fiatCurrencies.add(new FiatCurrencies("Canadian Dollar", "CAD"));
-        fiatCurrencies.add(new FiatCurrencies("Chilean Peso", "CLP"));
-        fiatCurrencies.add(new FiatCurrencies("Euro", "EUR"));
-        fiatCurrencies.add(new FiatCurrencies("New Zealand Dollar", "NZD"));
-        fiatCurrencies.add(new FiatCurrencies("Swiss Franc", "CHF"));
+        fiatCurrencies.add(new FiatCurrencies(1,"United States Dollar", "USD"));
+        fiatCurrencies.add(new FiatCurrencies(2,"Argentine Peso", "ARS"));
+        fiatCurrencies.add(new FiatCurrencies(3,"Australian Dollar", "AUD"));
+        fiatCurrencies.add(new FiatCurrencies(4,"Canadian Dollar", "CAD"));
+        fiatCurrencies.add(new FiatCurrencies(5,"Chilean Peso", "CLP"));
+        fiatCurrencies.add(new FiatCurrencies(6,"Euro", "EUR"));
+        fiatCurrencies.add(new FiatCurrencies(7,"New Zealand Dollar", "NZD"));
+        fiatCurrencies.add(new FiatCurrencies(8,"Swiss Franc", "CHF"));
         return new RestResponse<>(HttpStatus.ACCEPTED, fiatCurrencies);
     }
 }

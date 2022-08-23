@@ -35,20 +35,24 @@ export const HeaderComponent = () => {
             <h1>juliopredictor</h1>
             <div>
                 <Link
+                style={{ textDecoration: 'none' }}
                 to="/">
-                <p>Home</p>
+                <p className='desktopHeader-link'>Home</p>
                 </Link>
                 <Link
+                style={{ textDecoration: 'none' }}
                 to="/crypto">
-                <p>Cryptos</p>
+                <p className='desktopHeader-link'>Cryptos</p>
                 </Link>
                 <Link
+                style={{ textDecoration: 'none' }}
                 to="/favorite">
-                <p>Favorites</p>
+                <p className='desktopHeader-link'>Favorites</p>
                 </Link>
                 <Link
+                style={{ textDecoration: 'none' }}
                 to="/profile">
-                <p>Profile</p>
+                <p className='desktopHeader-link'>Profile</p>
                 </Link>
             </div>
         </div>

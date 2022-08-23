@@ -15,6 +15,7 @@ import { VerificationPage } from "./pages/publics/verification/VerificationPage"
 import CryptoCurrencyState from "./context/cryptoCurrencyContext/CryptoCurrencyState";
 import { useContext, useState } from "react";
 import AuthContext from "./context/authContext/AuthContext";
+import ProfilePage from "pages/publics/profile/ProfilePage";
 
 const App = () => {
 
@@ -59,6 +60,7 @@ const App = () => {
         <Route path="/favorite" element={<FavoritesPage authenticationStatus={authenticationStatus}/>}/>
         <Route path="/crypto/:id" element={<PredicatorPage authenticationStatus={authenticationStatus}/>}/>
         <Route path="/verification/*" element={<VerificationPage/>}/>
+        <Route path="/profile" element={<ProfilePage authenticationStatus={authenticationStatus}/>}/>
         <Route path="*" element={<NotFoundPage/>}/>
       </Routes>
       {/* </CryptoCurrencyState>

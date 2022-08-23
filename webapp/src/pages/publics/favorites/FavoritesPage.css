@@ -1,0 +1,43 @@
+.favorite_page_unauthorize{
+    display: grid;
+    justify-items: center;
+    margin-top: 40px;
+}
+
+.favorite_page_unauthorize > h1 {
+    font-size: 16px;
+    width: 60%;
+}
+
+.favorite_page_unauthorize > img{
+    width: 50%;
+}
+
+@media only screen and (min-width: 480px) {
+    .favorite_page_unauthorize > h1 {
+        font-size: 25px;
+        width: 70%;
+    }
+    
+    .favorite_page_unauthorize > img{
+        width: 35%;
+    }
+}
+@media only screen and (min-width: 768px) {
+    .favorite_page_unauthorize > h1 {
+        width: 50%;
+    }
+    
+    .favorite_page_unauthorize > img{
+        width: 250px
+    }    
+}
+@media only screen and (min-width: 1024px) {
+    .favorite_page_unauthorize > h1 {
+        width: 500px;
+    }
+    
+    .favorite_page_unauthorize > img{
+        width: 250px
+    }   
+}

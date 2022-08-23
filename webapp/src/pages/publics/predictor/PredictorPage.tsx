@@ -116,7 +116,7 @@ export default function PredicatorPage({ authenticationStatus }) {
                                 </div>
                                 <div className="predictor-data-numbers-div">
                                     {isPositive(crypto.volume_change_24h) ? <img src="/profits.png" /> : <img src="/loss.png" />}
-                                    <p className="predictor-data-numbers">{returnUnsignalNumber(crypto.volume_change_24h)}</p>
+                                    <p className="predictor-data-numbers">{returnUnsignalNumber(crypto.volume_change_24h).concat(" %")}</p>
                                 </div>
                             </div>
                             <div>

@@ -66,6 +66,10 @@
     
 }
 
+.desktopHeader-link{
+    color: aliceblue;
+}
+
 .desktopHeader > div > p:hover{
     animation-name: linkDesktopHeader;
     animation-duration: 3s;

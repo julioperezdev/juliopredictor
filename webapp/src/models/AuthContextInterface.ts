@@ -7,6 +7,7 @@ export interface AuthContextInterface {
     expireAt : any,
     /*variables*/
     loginUser ?: any,
+    logoutUser ?: any,
     decideAuth ?: any,
     verifyToken ?: any,
 }

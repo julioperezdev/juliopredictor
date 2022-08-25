@@ -12,11 +12,6 @@ export const EmailInput = ({decideAuth}) =>{
         setEmail(emailByEvent);
     }
 
-    const depurateEmail = () =>{
-        setEmail(null);
-
-    }
-
     const alertFunction = () =>{
         const emailValidation : boolean = checkIfEmail(email);
         if(!emailValidation){

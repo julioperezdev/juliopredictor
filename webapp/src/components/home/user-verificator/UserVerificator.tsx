@@ -1,13 +1,8 @@
-import {useContext, useEffect, useState} from "react"
+import {useEffect, useState} from "react"
 import {EmailInput} from "../../common/emailInput/EmailInput"
 import "./UserVerificator.css"
-import AuthContext from "../../../context/authContext/AuthContext"
-import { LoginRequestDto } from "../../../models/LoginRequestDto"
 
 export const UserVerificator = ({authenticationStatus, decideAuth}) =>{
-
-    
-    //const {decideAuth} = useContext(AuthContext);
     
     const [useAddEmail, setUseAddEmail] = useState(false);
 
@@ -19,22 +14,8 @@ export const UserVerificator = ({authenticationStatus, decideAuth}) =>{
     const onClickAddEmail = () =>{
         setUseAddEmail(true)
     }
-
-    const ppp = () =>{
-        console.log("JEJEJE")
-    }
-
     
     useEffect(() =>{
-        /*const request = {
-            email: "mario@email.com",
-            idRol: 1
-        }
-        //signupUser(request);
-        ppp()
-        */
-       //const user : LoginRequestDto = {email : "perezjulioernesto@gmail.com"}
-        //decideAuth(user)
     },[useAddEmail])
 
     

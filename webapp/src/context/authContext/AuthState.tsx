@@ -4,7 +4,7 @@ import AuthContext from "./AuthContext";
 import AuthReducer from "./AuthReducer";
 
 
-import {SIGNUP,LOGIN, UNVALIDATED, AUTHORIZING} from "../types"
+import {SIGNUP,LOGIN,LOGOUT, UNVALIDATED, AUTHORIZING} from "../types"
 
 import { LoginRequestDto } from "../../models/LoginRequestDto";
 import HttpClient from "../../common/HttpClient";
@@ -91,6 +91,13 @@ const AuthState = (props) =>{
         console.log(response.data);
     }
 
+    const logoutUser = () => {
+        dispatch({
+            type: LOGOUT,
+            payload: null
+        })
+    }
+
     return(
         <AuthContext.Provider value= {{
             email: state.email,
@@ -100,6 +107,7 @@ const AuthState = (props) =>{
             refreshToken : state.refreshToken,
             expireAt : state.expireAt,
             loginUser,
+            logoutUser,
             decideAuth,
             verifyToken,
         }}>

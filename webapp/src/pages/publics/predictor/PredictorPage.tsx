@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { isAuthenticated } from "common/AuthenticationHelper"
 import { useParams } from "react-router-dom";
-import { FavoritesCryptos } from "models/FavoritesCryptos";
 import HttpClient from "common/HttpClient";
 import { PredictionData } from "models/PredictorData";
 import { PulseLoader } from "react-spinners";
@@ -79,9 +78,6 @@ export default function PredicatorPage({ authenticationStatus }) {
     useEffect(() => { setIsAuthenticatedState(isAuthenticated(authenticationStatus)) }, []);
 
     return (
-        // <>{!isAuthenticatedState
-        //     ? <p>loader</p>
-        //     : 
             <div>
                 {!haveData
                     ? <div className="currencies-page-sweet-loading">
@@ -92,7 +88,7 @@ export default function PredicatorPage({ authenticationStatus }) {
                             {crypto.isBull ? <div><img src="/profit.png"/><p>SUBIRÁ</p></div> : <div><img src="/loss.png"/><p>BAJARÁ</p></div>}
                             <img src={crypto.logo}/>
                             <p>{crypto.price} {symbol}</p>
-                            <p>BOTON ME GUSTA</p>
+                            {isAuthenticated ? <p>BOTON ME GUSTA</p> : <></>}
                             <select className="predictor-selection" value={symbol} onChange={onChangeSymbol}>
                                 {currencies.map(particular =>(
                                     <option key={particular.id} value={particular.symbol}>{particular.name}</option>
@@ -173,7 +169,5 @@ export default function PredicatorPage({ authenticationStatus }) {
                         </div>
                     </div>}
             </div>
-        // }
-        // </>
     )
 }

@@ -1,6 +1,6 @@
 import { AuthenticationResponse } from "../../models/AuthenticationResponse";
 import { UserReducedResponse } from "../../models/UserReducedResponse";
-import {LOGIN, SIGNUP, UNVALIDATED, AUTHORIZING} from "../types"
+import {LOGIN, LOGOUT, SIGNUP, UNVALIDATED, AUTHORIZING} from "../types"
 import moment from "moment"
 
 export default (state, action) => {
@@ -33,6 +33,7 @@ export default (state, action) => {
             }
         case LOGIN: 
             let payloadLogin : AuthenticationResponse = payload;
+            console.log("HEEEEEEEEEE",payloadLogin)
             localStorage.clear()
             localStorage.setItem("email", payloadLogin.username);
             localStorage.setItem("token", payloadLogin.authenticationToken);
@@ -47,6 +48,17 @@ export default (state, action) => {
                 date: moment().format('LTS'),
                 refreshToken : payloadLogin.refreshToken,
                 expireAt : payloadLogin.expireAt,
+            }
+        case LOGOUT:
+            localStorage.clear();
+            return {
+                ...state,
+                email: null,
+                token: null,
+                isAuthenticated: false,
+                date: moment().format('LTS'),
+                refreshToken : null,
+                expireAt : null,
             }
         case UNVALIDATED:
             let payloadUnvalidated : UserReducedResponse = payload;

@@ -1,0 +1,38 @@
+.profile_page_unauthorized{
+    display: grid;
+    justify-items: center;
+    margin-top: 50px;
+}
+
+.profile_page_authorized{
+    display: grid;
+    justify-items: center;
+    margin-top: 50px;
+}
+
+.profile_page_authorized_info{
+    text-align: center;
+}
+
+.profile_page_authorized_info > img{
+    width: 100px;
+}
+
+.profile_page_authorized_info > p{
+    color: rgb(135, 135, 135);
+    font-size: 18px;
+}
+
+.profile_page_authorized_buttons > p{
+    color: rgb(75, 75, 75);
+    padding: 20px;
+    border: 2px solid rgb(249, 237, 255);
+    border-radius: 25px;
+    box-shadow: 2px 2px 10px rgb(223, 223, 223);
+    background-color: rgb(236, 246, 255);
+}
+
+@media only screen and (min-width: 480px) {}
+@media only screen and (min-width: 768px) {}
+@media only screen and (min-width: 1024px) {}
+@media only screen and (min-width: 1200px) {}

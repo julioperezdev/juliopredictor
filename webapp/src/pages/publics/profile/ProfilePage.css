@@ -23,7 +23,7 @@
     font-size: 18px;
 }
 
-.profile_page_authorized_buttons > p{
+.profile_page_authorized_buttons{
     color: rgb(75, 75, 75);
     padding: 20px;
     border: 2px solid rgb(249, 237, 255);

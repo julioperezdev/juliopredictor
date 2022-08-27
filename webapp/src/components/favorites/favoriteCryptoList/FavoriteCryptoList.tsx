@@ -1,6 +1,7 @@
 import { FavoritesCryptos } from "models/FavoritesCryptos";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import AlertEmptyCryptoList from "../alertEmptyCryptoList/AlertEmptyCryptoList";
 
 import "./FavoriteCryptoList.css"
 
@@ -8,12 +9,23 @@ export default function FavoriteCryptoList(){
 
     const [favoriteChange, setFavoriteChange] = useState<boolean>(false);
     const [favoritesCryptos, setFavoritesCryptos] = useState([]);
+    const [hasFavoritesCryptos, setHasFavoritesCryptos] = useState<boolean>(true);
+
+    const validateIfHasFavoritesCryptos = (favoritesCryptos : Array<any>) => {
+        let validationResult: boolean = favoritesCryptos.length > 0 ? true : false;
+        setHasFavoritesCryptos(validationResult);
+    }
 
     const getFavoriteCryptoFromLocalStorage = async() =>{
+        if(localStorage.getItem("favoritesCryptos") === null){
+            let emptyArray = validateIfHasFavoritesCryptos([])
+        }
         if(localStorage.getItem("favoritesCryptos") != null){
             let favoritesLocalStorage : Array<FavoritesCryptos> = await JSON.parse(localStorage.getItem("favoritesCryptos"));
             setFavoritesCryptos(favoritesLocalStorage);
+            validateIfHasFavoritesCryptos(favoritesLocalStorage)
         }
+
     }
 
     const depurateFavoriteCryptoLocalStorage = async (particularCurrency) =>{
@@ -24,7 +36,9 @@ export default function FavoriteCryptoList(){
             localStorage.setItem("favoritesCryptos", JSON.stringify(favoritesLocalStorageFiltered));
         }
         if(favoritesLocalStorageFiltered.length === 0){
-            setFavoritesCryptos([]);
+            let emptyArray = [];
+            setFavoritesCryptos(emptyArray);
+            validateIfHasFavoritesCryptos(emptyArray);
         }
         setFavoriteChange(!favoriteChange);
     }
@@ -32,6 +46,8 @@ export default function FavoriteCryptoList(){
     useEffect(() =>{getFavoriteCryptoFromLocalStorage()},[favoriteChange])
     return(
         <div className="favorite_crypto_list_base">
+            {!hasFavoritesCryptos ? <AlertEmptyCryptoList/> 
+            :<>
             {favoritesCryptos.map(particular => (
                 <li>
                     <p>{particular.symbol}</p>    
@@ -46,6 +62,8 @@ export default function FavoriteCryptoList(){
                     
                 </li>
             ))}
+            </>}
+            
         </div>
     )
 }

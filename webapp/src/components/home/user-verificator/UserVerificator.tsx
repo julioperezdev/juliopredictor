@@ -5,6 +5,7 @@ import "./UserVerificator.css"
 export const UserVerificator = ({authenticationStatus, decideAuth}) =>{
     
     const [useAddEmail, setUseAddEmail] = useState(false);
+    const [email, setEmail] = useState("");
 
     const stringCreator = (value:string, quantity:number):string =>{
         return value.length > quantity ? value.slice(0, quantity).concat("..."): value;
@@ -14,9 +15,17 @@ export const UserVerificator = ({authenticationStatus, decideAuth}) =>{
     const onClickAddEmail = () =>{
         setUseAddEmail(true)
     }
+
+    const getEmailByLocalStorage = () => {
+        setEmail(localStorage.getItem("email"));
+    }
     
     useEffect(() =>{
-    },[useAddEmail])
+        getEmailByLocalStorage();
+    },[useAddEmail,
+    localStorage.getItem("email"), 
+    localStorage.getItem("isAuthenticated"), 
+    localStorage.getItem("token")])
 
     
     return(
@@ -49,7 +58,7 @@ export const UserVerificator = ({authenticationStatus, decideAuth}) =>{
                         <img 
                         src="image/user3.png" 
                         className="" />
-                        <p>{stringCreator("perezjulioernesto@gmail.com", 30)}</p>
+                        <p>{stringCreator(email, 30)}</p>
                     </div>
                     <div>
                         <img 
@@ -64,7 +73,7 @@ export const UserVerificator = ({authenticationStatus, decideAuth}) =>{
                         <img 
                         src="image/user2.png" 
                         className="" />
-                        <p>{stringCreator("perezjulioernesto@gmail.com", 30)}</p>
+                        <p>{stringCreator(email, 30)}</p>
                     </div>
                     <div>
                         <img 

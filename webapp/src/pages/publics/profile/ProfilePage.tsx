@@ -1,13 +1,15 @@
 import { useState, useEffect, useContext } from "react";
-import {isAuthenticated} from "common/AuthenticationHelper";
+import {isAuthenticated, isAuthenticationInProcess} from "common/AuthenticationHelper";
 import {Link,  } from 'react-router-dom'
 import AuthContext from "context/authContext/AuthContext";
 import "./ProfilePage.css"
 import Swal from "sweetalert2";
 import { LoginRequestDto } from "models/LoginRequestDto";
+import { useNavigate } from "react-router-dom";
 
 export default function ProfilePage ({authenticationStatus}) {
 
+    const navigate = useNavigate()
     const {logoutUser, decideAuth} = useContext(AuthContext);
 
     const [isAuthenticatedState, setIsAuthenticatedState] = useState(false);
@@ -26,7 +28,6 @@ export default function ProfilePage ({authenticationStatus}) {
     
     const onClickChangeUser = () =>{
         setIsChangeEmail(true)
-        
     }
 
     const checkIfEmail = (email : string) : boolean => {
@@ -50,6 +51,7 @@ export default function ProfilePage ({authenticationStatus}) {
             const user : LoginRequestDto = {email: newUser}
             decideAuth(user);
             setNewUser("");
+            return navigate("/")
         }
     }
 
@@ -63,7 +65,7 @@ export default function ProfilePage ({authenticationStatus}) {
     }
 
     useEffect(() =>{
-        setIsAuthenticatedState(isAuthenticated(authenticationStatus))
+        setIsAuthenticatedState(isAuthenticated(authenticationStatus) || isAuthenticationInProcess(authenticationStatus))
         if(isAuthenticatedState){
             getEmailByLocalStorage();
         }
@@ -102,7 +104,7 @@ export default function ProfilePage ({authenticationStatus}) {
                 </div>
             </div>}
             </div> 
-            :<div>
+            :<div className="profile_page_authorized_change_user">
                 <p>Escriba el nuevo email</p>
                 <input 
                 type="email" 
@@ -111,8 +113,8 @@ export default function ProfilePage ({authenticationStatus}) {
                 maxLength={40}
                 onChange={(event) => emailChange(event.target.value)}/>
                 <div>
-                    <button onClick={alertFunction}>confirmar</button>
-                    <button onClick={onClickCancelChangeEmail}>cancelar</button>
+                    <p onClick={alertFunction}>confirmar</p>
+                    <p onClick={onClickCancelChangeEmail}>cancelar</p>
                 </div>
             </div>
         }

@@ -8,6 +8,7 @@
     /* grid-template-columns: repeat(3, 33%)!important; */
     /* justify-content: center!important; */
     text-align: center;
+    height: 30vh;
 }
 
 .top-four-list-base > div{
@@ -21,7 +22,8 @@
     justify-self: center !important;
     padding-left: 0;
     width: 100%;
-
+    overflow:hidden;
+    overflow-y:auto;
 }
 
 .top-four-list-base > ul > li{
@@ -50,4 +52,16 @@
     background-image: linear-gradient(to top, #a9a2e7 0%, #b1f4cf 100%);
     box-shadow: 5px 5px 30px rgb(248, 239, 255);
     color: #5e5e5e;
+}
+
+@media only screen and (min-width: 768px) {
+
+    .top-four-list-base{
+        height: 40vh;
+    }
+
+    .top-four-list-base > ul{
+        overflow:hidden;
+        overflow-y:hidden;
+    }
 }

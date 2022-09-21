@@ -12,7 +12,7 @@ public class DecideAuthModelMapper {
     public RegisterRequest emailToRegisterRequest(DecideSignupLoginRequest decideSignupLoginRequest){
         return new RegisterRequest(
                 decideSignupLoginRequest.getEmail(),
-                2L);
+                1L);
     }
 
     public UserReducedResponse userToUserReducedResponse(User user){

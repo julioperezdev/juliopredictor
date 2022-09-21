@@ -17,7 +17,7 @@ public class MailSenderServiceImplementation implements MailSenderService {
         NotificationEmail notificationEmail = new NotificationEmail(
                 "Please Activate your Account",
                 emailRequest.getEmail(),
-                String.format("Thanks you for sign up to Spring Accounting Web Application," +
+                String.format("Thanks you for sign up to Juliopredictor," +
                                 " please click on the below url to activate your account : " +
                                 "http://localhost:3000/verification/?token=%s",
                         emailRequest.getToken()));

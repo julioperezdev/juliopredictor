@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+  juliopredictor-database:
+    image: postgres
+    environment:
+      POSTGRES_USER: juliopredictor
+      POSTGRES_PASSWORD: openSourcePassword
+      PGDATA: /data/postgres
+    volumes:
+      - ./database:/data/postgres
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+  juliopredictor-api:
+    image: viloria/juliopredictor-restapi:v3
+    restart: always
+    ports:
+      - "8080:8080"
+  juliopredictor-webapp:
+    image: viloria/juliopredictor-webapp:v1
+    restart: always
+    ports:
+      - "3000:3000"
+
+
+

@@ -34,7 +34,7 @@ kill $(lsof -t -i:3000)
 **2 -** Execute the following script:
 
 ```
-docker-compose up -d .
+docker-compose up -d
 ```
 **3 -** Execute the following script to connect to database:
 

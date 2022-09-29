@@ -1,17 +1,17 @@
-#Juliopredictor: Hola Mundo Challenge
--
-##What is this? Why?
+# Juliopredictor: Hola Mundo Challenge
+
+## What is this? Why?
 
 Juliopredictor is a Web Application by **@Julioperezdev** with the original intentions to develop DDD Architechture using Java with Spring Boot for the Backend, also use ReactJS with Typescript to the Frontend and use PostgreSQL to the Database, each environment we use Docker to build a containers to make a easy steps to test Juliopredictor in a local environment. At the same time, make something that could be shared and used to share knowledge about programming.  
 
 This Webapp predicts cryptocurrency trends using a own algorithm explained in the **predictor algorithm section**. 
 
-##Project status
+## Project status
 This project is in DEVELOPMENT currently undergoing tests.
 
-##Instructions
+## Instructions
 
-###Requirements
+### Requirements
 
 Before to use Juliopredictor in your local environment a PC need to have the following installations:
 
@@ -27,7 +27,7 @@ kill $(lsof -t -i:5432)
 kill $(lsof -t -i:3000)
 ```
 
-###After to clone project
+### After to clone project
 
 **1 -** Go to **Juliopredictor** root directory
 
@@ -79,7 +79,7 @@ exit
 **7 -** Go to http://localhost:3000 using any web navigator to use Juliopredictor
 
 
-##Additional information
+## Additional information
 
 - If you want to use SQL client, you can connect with the following credentials
 

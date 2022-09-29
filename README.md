@@ -39,7 +39,7 @@ docker-compose up -d
 **3 -** Execute the following script to connect to database:
 
 ```
-docker exec -it juliopredictorcom_juliopredictor-database_1 psql -U juliopredictor
+docker exec -it juliopredictorcom-juliopredictor-database-1 psql -U juliopredictor
 ```
 
 *Observation: if has error message similar like:*

@@ -89,3 +89,40 @@ exit
 	```
 - The credentials to SMTP protocol was bougth with knowledge that everyone can see the data, this email accound will be deleted the first day of 2023, so if you want to use email functionality in Juliopredictor you need to use your own email with SMTP protocol. 
 password: openSourcePassword
+
+## Look & Feel
+
+### Home page without authentication
+![homePageWithoutAuthentication](https://res.cloudinary.com/julioperez-dev/image/upload/v1664421686/Screen_Shot_2022-09-29_at_00.15.54_x7p7gm.png)
+-
+-
+
+### Home page within email to authenticate
+![homePageWithoutAuthentication](https://res.cloudinary.com/julioperez-dev/image/upload/v1664421698/Screen_Shot_2022-09-29_at_00.16.46_nz1hpm.png)
+-
+-
+
+### Home page within authentication approved
+![homePageWithoutAuthentication](https://res.cloudinary.com/julioperez-dev/image/upload/v1664421705/Screen_Shot_2022-09-29_at_00.20.10_qvb5ju.png)
+-
+-
+
+### Cryptocurrency page to see prediction of each currency and could add to favorite currency
+![homePageWithoutAuthentication](https://res.cloudinary.com/julioperez-dev/image/upload/v1664421718/Screen_Shot_2022-09-29_at_00.20.27_lvlz0n.png)
+-
+-
+
+### Home page within authentication approved and cryptocurrencies selected
+![homePageWithoutAuthentication](https://res.cloudinary.com/julioperez-dev/image/upload/v1664421708/Screen_Shot_2022-09-29_at_00.20.41_cad9pf.png)
+-
+-
+
+### Prediction by particular crypto, the values in this oportunity is USD
+![homePageWithoutAuthentication](https://res.cloudinary.com/julioperez-dev/image/upload/v1664421821/Screen_Shot_2022-09-29_at_00.23.05_hucl4t.png)
+-
+-
+
+### Profile page to signout or change to other email
+![homePageWithoutAuthentication](https://res.cloudinary.com/julioperez-dev/image/upload/v1664421808/Screen_Shot_2022-09-29_at_00.20.33_sd3uzz.png)
+-
+-
